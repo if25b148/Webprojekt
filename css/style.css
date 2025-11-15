@@ -1,5 +1,130 @@
 p {
   font-family: verdana;
-  font-size: 20px;
-  color: red;
+  font-size: 12px;
+  color: rgb(202, 28, 28);
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+main {
+    height: 70%;
+    display: flex;        /* Damit section und aside nebeneinander stehen */
+}
+
+section {
+    width: 80%;
+    background: #f5f5f5;
+    display: flex;
+    justify-content: flex-start; /* ← richtiger Wert */
+    align-items: center;
+    padding: 20px;
+    gap: 30px; /* ← Abstand zwischen den Boxen */
+}
+/* Container nur für diese drei Boxen */
+.box-container {
+    display: flex;
+    justify-content: center;  /* Boxen horizontal zentrieren */
+    align-items: center;      /* optional: vertikal */
+    gap: 30px;                /* Abstand zwischen Boxen */
+}
+
+
+section .box {
+    background: #d3e4ff;
+    padding: 20px;
+    border-radius: 0;
+    width: 20%;
+    max-width: 20%;
+    flex-shrink: 0;
+}
+
+section .box a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    display: block;
+    margin-bottom: 10px;
+    color: #003d99;
+}
+aside {
+    width: 20%;
+    background: #e5e5e5;
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* alles links ausrichten */
+    gap: 250px; /* Abstand zwischen Logo und Nav */
+    padding: 10px 20px;
+     height: 12%;
+    max-height: 12%;
+    width: 100%;
+}
+.anmeldenlink
+{
+   margin-left: 70px;        /* entfernt linken Abstand */
+  padding-left: 0; 
+}
+nav ul {
+    list-style: none;
+    display: flex;            /*  Elemente nebeneinander */
+    gap: 20px;                /* Abstand zwischen Menüpunkten */
+    padding-left: 10px;  /* Abstand vom linken Rand */
+    margin-top: 10px;
+}
+nav ul li {
+  margin: 0 20px;   /* Abstand links und rechts */
+  font-size: 18px;
+  padding: 2px; 
+}
+
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+nav ul li a:hover {
+    color: #007bff;           /* Beispiel-Hoverfarbe */
+}
+/* Footer 15% der Seite */
+footer {
+    height: 12%;
+    max-height: 12%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;   /* vertikal zentriert */
+    justify-content: center; /* horizontal zentriert */
+}
+
+footer ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;   /* UL horizontal zentrieren */
+    gap: 200px;                 /* Abstand zwischen den Links vergrößern */
+    padding: 0;
+    margin: 10px auto;         /* UL selbst zentrieren */
+}
+
+footer ul li {
+    margin: 0;                 /* Abstand über gap steuern */
+    font-size: 18px;
+    padding: 2px;
+}
+
+
+
+footer ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+footer ul li a:hover {
+    color: #007bff;          /* Beispiel-Hoverfarbe */
 }
