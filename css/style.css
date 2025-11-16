@@ -187,7 +187,7 @@ footer ul li a:hover {
     color: #006644;
     font-size: 14px;
 }
-
+/*aside formatirung*/
 .register-link {
     font-family: Arial, sans-serif;
     font-size: 16px;
@@ -207,4 +207,82 @@ footer ul li a:hover {
     text-decoration: underline;
     color: #004422;
 }
+/* Registrierungsseite */
+.register-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.register-container {
+    background: #fff;
+    padding: 20px 25px;
+    width: 320px; /* etwas breiter für nebeneinander */
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 0 8px rgba(0,0,0,0.2);
+}
+
+/* Überschrift */
+.register-container h2 {
+    margin-bottom: 10px;
+}
+
+/* Label */
+.register-container label {
+    display: block;
+    margin-top: 10px;
+    text-align: left;
+    font-weight: bold;
+}
+
+/* Inputs */
+.register-input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 3px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+}
+
+/* Button */
+.register-btn {
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #b0e6c7;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.register-btn:hover {
+    background-color: #9dd3b1;
+}
+
+/* Gast-Link */
+.register-gast-link {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #006644;
+    font-size: 14px;
+}
+
+.register-gast-link:hover {
+    text-decoration: underline;
+    color: #004422;
+}
+
+/* Neue Flexbox-Struktur für nebeneinander */
+.register-row {
+    display: flex;
+    gap: 30px; /* Abstand zwischen Spalten */
+    margin-top: 10px;
+}
+
+.register-col {
+    flex: 1; /* gleiche Breite für beide Spalten */
+    display: flex;
+    flex-direction: column;
+}
