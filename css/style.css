@@ -31,15 +31,11 @@ section {
     align-items: center;      /* optional: vertikal */
     gap: 30px;                /* Abstand zwischen Boxen */
 }
-
-
 section .box {
     background: #d3e4ff;
     padding: 20px;
     border-radius: 0;
     width: 20%;
-    max-width: 20%;
-    flex-shrink: 0;
 }
 
 section .box a {
@@ -111,20 +107,15 @@ footer ul {
     padding: 0;
     margin: 10px auto;         /* UL selbst zentrieren */
 }
-
 footer ul li {
     margin: 0;                 /* Abstand über gap steuern */
     font-size: 18px;
     padding: 2px;
 }
-
-
-
 footer ul li a {
     text-decoration: none;
     color: black;
 }
-
 footer ul li a:hover {
     color: #007bff;          /* Beispiel-Hoverfarbe */
 }
