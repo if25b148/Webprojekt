@@ -13,6 +13,7 @@ html, body {
 
 main {
     height: 70%;
+    width: 100%;
     display: flex;        /* Damit section und aside nebeneinander stehen */
 }
 .imglogo{
@@ -66,8 +67,18 @@ header {
 }
 .anmeldenlink
 {
-   margin-left: 70px;        /* entfernt linken Abstand */
-  padding-left: 0; 
+    margin-left: 70px;        /* entfernt linken Abstand */
+    padding-left: 0;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+.anmeldenlink:hover {
+    text-decoration: underline;
+    color: #000000;       /* etwas dunkler beim Hover */
+    background-color: #7fcf98;  /* optional leichter Hintergrund beim Hover */
 }
 nav ul {
     list-style: none;
