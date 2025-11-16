@@ -19,18 +19,47 @@
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="kontakt.html">Kontakt</a></li>
                 <li><a href="impressum.html">Impressum</a></li>
-                 <li></li><a href="login.html" class="anmeldenlink">Anmelden</a></li>
+                 <li></li><a href="login.html" class="anmeldenlink">Login</a></li>
             </ul>
         </nav>
        
   </header>
   <main>
-    <section>
+    <section class="login-section">
+
+        <div class="login-container">
+
+            <h2>Login</h2>
+
+            <form>
+
+                <label for="email">E-Mail</label>
+                <input type="email" id="email" placeholder="beispiel@mail.de" required>
+
+                <label for="passwort">Passwort</label>
+                <input type="password" id="passwort" placeholder="••••••••" required>
+
+                <button type="submit" class="login-btn">Login</button>
+
+            </form>
+
+            <a href="passwort-vergessen.html" class="forgot-link">
+                Haben Sie das Passwort vergessen? Hier zurücksetzen.
+            </a>
+
+            <a href="gast.html" class="gast-link">
+                Wollen Sie als Gast fortfahren?
+            </a>
+
+        </div>
+
     </section>
 
-    <aside>
-  <p>This is a aside.</p>
-    </aside>
+   <aside>
+    <p class="register-link">Neu hier?</br> <a href="registrieren.html">Jetzt registrieren</a></p>
+  </aside>
+
+
   </main>
   <footer>
       <ul>
