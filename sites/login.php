@@ -1,3 +1,32 @@
+<?php
+
+session_start();
+
+$errors = 
+[
+'login' => $_SESSION['login_error' ] ?? '',
+'register' => $_SESSION['register_error' ] ?? ''
+];
+$activeForm = $_SESSION['active_form' ] ?? 'login';
+
+session_unset();
+
+function showError($error) {
+return !empty($error) ? "<p class='error-message'>$error</p>" : '';
+
+}
+
+function isActiveForm($formName, $activeForm) {
+return $formName === $activeForm ? 'active' : '';
+
+}
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -28,15 +57,15 @@
 <section class="login-section">
 
     <!-- LOGIN -->
-    <div class="login-container active" id="login-form">
+    <div class="login-container <?= isActiveForm('login', $activeForm); ?>" id="login-form">
         <h2>Login</h2>
-
-        <form action="">
+        <?=  showError($error['login']); ?>
+        <form action="login_register.php" method="post">
             <label for="email">E-Mail</label>
             <input type="email" name="email" placeholder="beispiel@mail.de" required>
 
             <label for="passwort">Passwort</label>
-            <input type="password" name="passwort" placeholder="••••••••" required>
+            <input type="password" name="password" placeholder="••••••••" required>
 
             <button type="submit" class="login-btn">Login</button>
         </form>
@@ -50,10 +79,10 @@
 
 
     <!-- REGISTRIEREN -->
-    <div class="login-container" id="register-form">
+    <div class="login-container <?= isActiveForm('register', $activeForm); ?>" id="register-form">
         <h2>Registrieren</h2>
-
-        <form action="" method="">
+        <?=  showError($error['register']); ?>
+        <form action="login_register.php" method="post">
             <div class="register-row">
                 <div class="register-col">
                     <label for="vorname">Vorname</label>
@@ -72,7 +101,7 @@
                 </div>
                 <div class="register-col">
                     <label for="passwort">Passwort</label>
-                    <input type="password" name="passwort" placeholder="********" class="register-input">
+                    <input type="password" name="password" placeholder="********" class="register-input">
                 </div>
             </div>
 
