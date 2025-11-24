@@ -80,6 +80,7 @@
           <li><a href="sites/impressum.html">Impressum</a></li>
       </ul>
   </footer>
+  <script src="sites/script.js"></script>
 </body>
 </html>
 
