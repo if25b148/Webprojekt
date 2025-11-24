@@ -46,6 +46,7 @@ if (password_verify($password, $user['password'])) {
     exit();
     }
 }
+}
 
     $_SESSION['login_error' ] = 'Incorrect email or password';
     $_SESSION['active_form'] = 'login';
