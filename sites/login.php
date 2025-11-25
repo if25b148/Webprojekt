@@ -59,7 +59,7 @@ return $formName === $activeForm ? 'active' : '';
     <!-- LOGIN -->
     <div class="login-container <?= isActiveForm('login', $activeForm); ?>" id="login-form">
         <h2>Login</h2>
-        <?=  showError($error['login']); ?>
+        <?= showError($errors['login']); ?>
         <form action="login_register.php" method="post">
             <label for="email">E-Mail</label>
             <input type="email" name="email" placeholder="beispiel@mail.de" required>
@@ -67,7 +67,7 @@ return $formName === $activeForm ? 'active' : '';
             <label for="passwort">Passwort</label>
             <input type="password" name="password" placeholder="••••••••" required>
 
-            <button type="submit" class="login-btn">Login</button>
+            <button type="submit" name="login" class="login-btn">Login</button>
         </form>
 
         <p><a href="passwort-vergessen.html" class="forgot-link">Haben Sie das Passwort vergessen? Hier zurücksetzen.</a></p>
@@ -81,7 +81,7 @@ return $formName === $activeForm ? 'active' : '';
     <!-- REGISTRIEREN -->
     <div class="login-container <?= isActiveForm('register', $activeForm); ?>" id="register-form">
         <h2>Registrieren</h2>
-        <?=  showError($error['register']); ?>
+        <?=  showError($errors['register']); ?>
         <form action="login_register.php" method="post">
             <div class="register-row">
                 <div class="register-col">
@@ -111,7 +111,7 @@ return $formName === $activeForm ? 'active' : '';
                 <option value="admin">Admin</option>
             </select>
 
-            <button type="submit" class="register-btn">Registrieren</button>
+            <button type="submit"name="register" class="register-btn">Registrieren</button>
         </form>
 
         <p><a href="..\index.html" class="register-gast-link">Als Gast fortfahren</a></p>

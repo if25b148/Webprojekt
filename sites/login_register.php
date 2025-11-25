@@ -1,3 +1,5 @@
+
+
 <?php
 
 session_start();
@@ -20,7 +22,7 @@ if (isset($_POST['register']))
 
         }
 
-        header("Location: index.php");
+        header("Location: login.php");
         exit();
 
     }
@@ -38,20 +40,22 @@ if (password_verify($password, $user['password'])) {
     $_SESSION['email'] = $user['email'];
 
 
-    if ($user['role' ] === 'admin' ) {
+    if ($user['role'] === 'admin' ) {
         header("Location: admin_page.php");
+
     } else {
         header("Location: user_page.php");
-
-    exit();
     }
+    exit();
+
 }
 }
 
     $_SESSION['login_error' ] = 'Incorrect email or password';
     $_SESSION['active_form'] = 'login';
-    header("Location: index.php");
+    header("Location: login.php");
     exit();
 }
+
 
 ?>
