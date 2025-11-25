@@ -70,7 +70,7 @@ return $formName === $activeForm ? 'active' : '';
             <button type="submit" name="login" class="login-btn">Login</button>
         </form>
 
-        <p><a href="passwort-vergessen.html" class="forgot-link">Haben Sie das Passwort vergessen? Hier zurücksetzen.</a></p>
+        <p><a href="passwort_vergessen.php" class="forgot-link">Haben Sie das Passwort vergessen? Hier zurücksetzen.</a></p>
         <p><a href="gast.html" class="gast-link">Wollen Sie als Gast fortfahren?</a></p>
         <p> Haben Sie kein Konto?
             <a href="#" onclick="showForm('register-form')"> Registrieren</a>
