@@ -1,13 +1,14 @@
 p {
    font-family: Arial, sans-serif;
   font-size: 12px;
-  color: rgb(202, 28, 28);
+  color: rgb(53, 45, 45);
 }
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
     width: 100%;
+    color:rgb(53, 45, 45);
     font-family: Arial, sans-serif;
 }
 
@@ -37,7 +38,7 @@ section {
     gap: 30px;                /* Abstand zwischen Boxen */
 }
 section .box {
-    background: #d3e4ff;
+    background: #cdcbca;
     padding: 20px;
     border-radius: 0;
     width: 20%;
@@ -49,12 +50,28 @@ section .box a {
     font-size: 18px;
     display: block;
     margin-bottom: 10px;
-    color: #003d99;
+    color: #3d2307;
 }
 aside {
     width: 20%;
     background: #e5e5e5;
 }
+.HomeBuchen {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #877c77eb;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+}
+
+.HomeBuchen:hover {
+    background-color: #554c48eb;
+}
+
 header {
     display: flex;
     align-items: center;
@@ -165,7 +182,7 @@ footer ul li a:hover {
     text-align: left;
 }
 
-.login-container input, 
+.login-container input,
 select {
     width: 100%;
     padding: 8px;
@@ -320,3 +337,86 @@ margin-bottom: 20px;
     width: 300px;
     margin: 0 auto; 
 }
+
+/* FAQ CONTENT BOX */
+        .faq-box {
+        background: #d2ebdf;
+        padding: 40px 60px;
+        height: 280px;
+        overflow-y: auto;
+        scrollbar-width: none; /* Firefox, entfernt den scrollbar */
+        -ms-overflow-style: none;  /* IE und Edge entfernt den scrollbar*/
+        }
+        .faq-box::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Edge , entfernt den scrollbar*/
+        }
+        .question {
+             font-weight: bold;
+             cursor: pointer;
+             padding: 8px 0;
+        }
+        .answer {
+         display: none; /* ✅ Start: versteckt */
+        padding: 5px 0 10px 0;
+        }
+        .faq-item {
+         margin-bottom: 15px;
+        }
+
+
+        /* KURSE */
+        .kurs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 200px) 1fr;
+            gap: 40px;
+            padding: 0 60px;
+        }
+
+        .kurs-box {
+            background: #d2ebdf;
+            color: rgb(0, 0, 0);
+            padding: 70px 20px 0px 20px;
+            height: 150px;
+            font-size: 18px;
+            text-align: center;
+           
+        }
+
+        .kurs-box a {
+            color: rgb(0, 0, 0);
+            text-decoration: underline;
+        }
+
+      /* Tabelle bei kursinfos.html */  
+.centered-table {
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse; /* optional */
+    border: none; /* entfernt alle Rahmen */
+}
+
+
+.centered-table td {
+    border: none; /* entfernt auch die Zellenrahmen, falls vorhanden */
+    padding: 8px; /* optional, damit es schön aussieht */
+}
+.centered-table th
+{
+  border: none; /* entfernt auch die Zellenrahmen, falls vorhanden */
+    padding: 8px; /* optional, damit es schön aussieht */
+     text-align: left; /* alles linksbündig */
+}
+/*Ueber Uns*/
+.content-box {
+    background: #c9e7d6;      /* sanfte, frische Hintergrundfarbe */
+    padding: 30px 40px;        /* Innenabstand */
+    border-radius: 15px;       /* abgerundete Ecken */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* leichter Schatten für Tiefe */
+    max-width: 800px;           /* Breite begrenzen */
+    margin: 40px auto;          /* zentrieren mit Abstand oben/unten */
+    font-family: 'Arial', sans-serif;
+    color: #053d2d;            /* dunkles, elegantes Grün */
+    line-height: 1.7;          /* bessere Lesbarkeit */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+

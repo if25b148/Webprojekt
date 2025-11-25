@@ -124,8 +124,12 @@ return $formName === $activeForm ? 'active' : '';
 
 
    <aside>
-    <p class="register-link">Neu hier?</br> <a href="registrieren.html">Jetzt registrieren</a></p>
-  </aside>
+    <p class="register-link">
+        Neu hier?<br>
+        <a href="#" onclick="showForm('register-form')">Jetzt registrieren</a>
+    </p>
+</aside>
+
 
 
   </main>
