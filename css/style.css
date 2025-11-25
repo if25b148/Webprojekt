@@ -1,15 +1,16 @@
 p {
    font-family: Arial, sans-serif;
   font-size: 12px;
-  color: rgb(53, 45, 45);
+  color: hsl(0, 14%, 13%);
 }
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
     width: 100%;
-    color:rgb(53, 45, 45);
+    color:rhsl(0, 14%, 13%);
     font-family: Arial, sans-serif;
+   background-color: #b0e6c7;
 }
 
 main {
@@ -23,7 +24,7 @@ main {
 
 section {
     width: 80%;
-    background: #f5f5f5;
+    background: #b0e6c7;
     display: flex;
     justify-content: flex-start; /* ← richtiger Wert */
     align-items: center;
@@ -38,7 +39,7 @@ section {
     gap: 30px;                /* Abstand zwischen Boxen */
 }
 section .box {
-    background: #cdcbca;
+    background: #d3f0e0;
     padding: 20px;
     border-radius: 0;
     width: 20%;
@@ -54,7 +55,7 @@ section .box a {
 }
 aside {
     width: 20%;
-    background: #e5e5e5;
+    background: #d3f0e0;
 }
 .HomeBuchen {
     display: inline-block;
@@ -94,8 +95,8 @@ header {
 }
 .anmeldenlink:hover {
     text-decoration: underline;
-    color: #000000;       /* etwas dunkler beim Hover */
-    background-color: #7fcf98;  /* optional leichter Hintergrund beim Hover */
+    color: #877c77eb;       /* etwas dunkler beim Hover */
+    background-color: #3a5f4e;  /* optional leichter Hintergrund beim Hover */
 }
 nav ul {
     list-style: none;
@@ -113,12 +114,12 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: black;
+    color: #261d1d;
     font-weight: 500;
 }
 
 nav ul li a:hover {
-    color: #007bff;           /* Beispiel-Hoverfarbe */
+    color: #877c77eb;           /* Beispiel-Hoverfarbe */
 }
 /* Footer 15% der Seite */
 footer {
@@ -146,10 +147,10 @@ footer ul li {
 }
 footer ul li a {
     text-decoration: none;
-    color: black;
+    color: hsl(0, 14%, 13%);
 }
 footer ul li a:hover {
-    color: #007bff;          /* Beispiel-Hoverfarbe */
+    color: #877c77eb;          /* Beispiel-Hoverfarbe */
 }
 
 /* Login Seite kompakt */
@@ -206,14 +207,14 @@ select {
     display: block;
     margin-top: 10px;
     text-decoration: none;
-    color: #006644;
+    color: #3a5f4e;
     font-size: 14px;
 }
 /*aside formatirung*/
 .register-link {
     font-family: Arial, sans-serif;
     font-size: 16px;
-    color: #333;
+    color: hsl(0, 14%, 13%);
     text-align: center;
     margin-top: 20px;
 }
@@ -329,24 +330,35 @@ margin-bottom: 20px;
 }
 
 .welcomespan {
-    color:#7494ec;
+    color:#3a5f4e;
 }
 
 .boxAdminUser button{
     display: block;
     width: 300px;
-    margin: 0 auto; 
+    margin: 0 auto;
 }
 
 /* FAQ CONTENT BOX */
         .faq-box {
-        background: #d2ebdf;
-        padding: 40px 60px;
-        height: 280px;
-        overflow-y: auto;
-        scrollbar-width: none; /* Firefox, entfernt den scrollbar */
-        -ms-overflow-style: none;  /* IE und Edge entfernt den scrollbar*/
-        }
+    background: #d3f0e0;
+    padding: 40px 60px;
+    height: 280px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    border-radius: 15px;
+    max-width: 800px;
+    margin: 40px auto;
+    font-family: 'Arial', sans-serif;
+    color: #3a5f4e;
+    line-height: 1.7;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    -webkit-transition: transform 0.3s ease, box-shadow 0.3s ease;
+    -moz-transition: transform 0.3s ease, box-shadow 0.3s ease;
+    -ms-transition: transform 0.3s ease, box-shadow 0.3s ease;
+    -o-transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
         .faq-box::-webkit-scrollbar {
         display: none; /* Chrome, Safari, Edge , entfernt den scrollbar*/
         }
@@ -356,7 +368,7 @@ margin-bottom: 20px;
              padding: 8px 0;
         }
         .answer {
-         display: none; /* ✅ Start: versteckt */
+         display: none; /*Start: versteckt */
         padding: 5px 0 10px 0;
         }
         .faq-item {
@@ -373,8 +385,8 @@ margin-bottom: 20px;
         }
 
         .kurs-box {
-            background: #d2ebdf;
-            color: rgb(0, 0, 0);
+            background: #d3f0e0;
+            color: hsl(0, 14%, 13%);
             padding: 70px 20px 0px 20px;
             height: 150px;
             font-size: 18px;
@@ -383,7 +395,7 @@ margin-bottom: 20px;
         }
 
         .kurs-box a {
-            color: rgb(0, 0, 0);
+            color: hsl(0, 14%, 13%);
             text-decoration: underline;
         }
 
@@ -408,15 +420,39 @@ margin-bottom: 20px;
 }
 /*Ueber Uns*/
 .content-box {
-    background: #c9e7d6;      /* sanfte, frische Hintergrundfarbe */
-    padding: 30px 40px;        /* Innenabstand */
-    border-radius: 15px;       /* abgerundete Ecken */
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* leichter Schatten für Tiefe */
-    max-width: 800px;           /* Breite begrenzen */
-    margin: 40px auto;          /* zentrieren mit Abstand oben/unten */
+    background: #d3f0e0;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: none; /* Schatten entfernt */
+    max-width: 800px;
+    margin: 40px auto;
     font-family: 'Arial', sans-serif;
-    color: #053d2d;            /* dunkles, elegantes Grün */
-    line-height: 1.7;          /* bessere Lesbarkeit */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #3a5f4e;
+    line-height: 1.7;
+    transition: transform 0.3s ease;
+    -webkit-transition: transform 0.3s ease;
+    -moz-transition: transform 0.3s ease;
+    -ms-transition: transform 0.3s ease;
+    -o-transition: transform 0.3s ease;
+}
+
+.h2angeboteKurse{
+    color: #261d1d;
+}
+.theadkurse{
+     color: #261d1d;
+}
+.angeboteneKurse{
+     color: #261d1d;
+     font-weight: bold;
+}
+.kontaktKurse{
+    color: hsl(0, 14%, 13%);           /* Textfarbe Braun */
+    text-decoration: none;   /* Standard: nicht unterstrichen */
+    font-weight: bold;       /* optional: fett */
+    cursor: pointer;  
+}
+.kontaktKurse:hover {
+    text-decoration: underline; /* Unterstrich beim Hover */
 }
 

@@ -26,19 +26,64 @@ if (isset($_POST['reset'])) {
 <link rel="stylesheet" href="../css/style.css"> <!-- optional -->
 </head>
 <body>
-<h2>Neues Passwort setzen</h2>
+
 
 <?php if (!empty($error)) echo "<p style='color:red;'>$error</p>"; ?>
 <?php if (!empty($_SESSION['success'])) { echo "<p style='color:green;'>".$_SESSION['success']."</p>"; unset($_SESSION['success']); } ?>
 
-<form method="post">
-    <label>E-Mail:</label><br>
-    <input type="email" name="email" required><br><br>
 
-    <label>Neues Passwort:</label><br>
-    <input type="password" name="new_password" required><br><br>
+<header>
+        <a href="..\index.html">
+             <img src="../img/logo.png" alt="Logo" class="imglogo">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="kursinfos.html">Kurse</a></li>
+                <li><a href="ueberuns.html">Über uns</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+                <li><a href="impressum.html">Impressum</a></li>
+                 <li></li><a href="login.php" class="anmeldenlink">Login</a></li>
+            </ul>
+        </nav>
+       
+  </header>
 
-    <button type="submit" name="reset">Passwort ändern</button>
-</form>
+<main>
+<section class="login-section">
+    <div class="login-container active" id="forgot-form">
+        <h2>Passwort zurücksetzen</h2>
+
+        <?php if (!empty($error)) echo "<p class='error-message'>$error</p>"; ?>
+        <?php if (!empty($_SESSION['success'])) { 
+            echo "<p class='success-message'>".$_SESSION['success']."</p>"; 
+            unset($_SESSION['success']); 
+        } ?>
+
+        <form method="post">
+            <label for="email">E-Mail</label>
+            <input type="email" name="email" placeholder="beispiel@mail.de" required>
+
+            <label for="new_password">Neues Passwort</label>
+            <input type="password" name="new_password" placeholder="********" required>
+
+            <button type="submit" name="reset" class="login-btn">Passwort ändern</button>
+        </form>
+
+        <p><a href="login.php" class="forgot-link">Zurück zum Login</a></p>
+    </div>
+</section>
+<aside>
+  <p></p>
+    </aside>
+</main>
+<footer>
+      <ul>
+          <li><a href="datenschutzerklaerung.html">Datenschutzerklärung</a></li>
+          <li><a href="agb.html">AGB</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+          <li><a href="impressum.html">Impressum</a></li>
+      </ul>
+  </footer>
 </body>
 </html>
