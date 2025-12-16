@@ -4,6 +4,16 @@ if (!isset($_SESSION['email'])) {
     header("Location: login.php");
     exit();
 }
+
+// Optional: Wenn die Rolle noch nicht in der Session ist, aus der DB laden
+if (!isset($_SESSION['role'])) {
+    require_once 'config.php';
+    $stmt = $conn->prepare("SELECT role FROM users WHERE email=?");
+    $stmt->bind_param("s", $_SESSION['email']);
+    $stmt->execute();
+    $result = $stmt->get_result()->fetch_assoc();
+    $_SESSION['role'] = $result['role'] ?? 'User';
+}
 ?>
 
 <!DOCTYPE html>
@@ -78,7 +88,6 @@ if (!isset($_SESSION['email'])) {
             transition: background 0.3s, transform 0.2s;
         }
 
-        /* Standardgrüne Buttons */
         .btn-green {
             background-color: #006644;
         }
@@ -88,7 +97,6 @@ if (!isset($_SESSION['email'])) {
             transform: translateY(-2px);
         }
 
-        /* Logout-Button rot */
         .btn-red {
             background-color: #c0392b;
         }
@@ -102,14 +110,11 @@ if (!isset($_SESSION['email'])) {
 <body>
     <section class="userpagesection">
         <div class="boxAdminUser">
-            <h1>Willkommen, <span><?= htmlspecialchars($_SESSION['vorname']); ?></span></h1>
+            <h1>Willkommen, <span><?= htmlspecialchars($_SESSION['role'] . ' ' . $_SESSION['vorname']); ?></span></h1>
             <p>Du bist erfolgreich eingeloggt</p>
 
             <div class="button-container">
-                <!-- Logout Button -->
                 <button class="btn-red" onclick="window.location.href='logout.php'">Logout</button>
-
-                
                 <button class="btn-green" onclick="window.location.href='admindatenverwaltung.php'">User Daten verwalten</button>
                 <button class="btn-green" onclick="window.location.href='kurseerstellen.php'">Kurse erstellen</button>
             </div>
