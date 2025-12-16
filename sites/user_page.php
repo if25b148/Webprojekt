@@ -13,7 +13,6 @@ if (!isset($_SESSION['email'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Page</title>
     <style>
-        /* Body & Grundlayout */
         body {
             margin: 0;
             padding: 0;
@@ -25,7 +24,6 @@ if (!isset($_SESSION['email'])) {
             background-color: #b0e6c7;
         }
 
-        /* Section zentrieren */
         .userpagesection {
             display: flex;
             justify-content: center;
@@ -34,18 +32,16 @@ if (!isset($_SESSION['email'])) {
             height: 100%;
         }
 
-        /* Box für Inhalte */
         .boxAdminUser {
             background-color: #d3f0e0;
             padding: 40px;
             border-radius: 12px;
             box-shadow: 0 0 15px rgba(0,0,0,0.2);
             text-align: center;
-            max-width: 400px;
+            max-width: 500px;
             width: 90%;
         }
 
-        /* Überschrift */
         .boxAdminUser h1 {
             margin-bottom: 15px;
             font-size: 24px;
@@ -62,23 +58,44 @@ if (!isset($_SESSION['email'])) {
             color: #3a5f4e;
         }
 
-        /* Buttons */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
         .boxAdminUser button {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
+            flex: 1;
+            min-width: 120px;
+            padding: 12px 15px;
             font-size: 16px;
             font-weight: bold;
             border: none;
             border-radius: 6px;
             cursor: pointer;
-            background-color: #006644;
             color: #fff;
-            transition: background 0.3s;
+            transition: background 0.3s, transform 0.2s;
         }
 
-        .boxAdminUser button:hover {
+        /* Standardgrüne Buttons */
+        .btn-green {
+            background-color: #006644;
+        }
+
+        .btn-green:hover {
             background-color: #004d33;
+            transform: translateY(-2px);
+        }
+
+        /* Logout-Button rot */
+        .btn-red {
+            background-color: #c0392b;
+        }
+
+        .btn-red:hover {
+            background-color: #a93226;
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -87,9 +104,15 @@ if (!isset($_SESSION['email'])) {
         <div class="boxAdminUser">
             <h1>Willkommen, <span><?= htmlspecialchars($_SESSION['vorname']); ?></span></h1>
             <p>Du bist erfolgreich eingeloggt</p>
-            <button onclick="window.location.href='logout.php'">Logout</button>
-            <button onclick="window.location.href='datenuser.php'">Meine Daten</button>
-            <button onclick="window.location.href='kursebuchen.php'">Kurse buchen</button>
+
+            <div class="button-container">
+                <!-- Logout Button -->
+                <button class="btn-red" onclick="window.location.href='logout.php'">Logout</button>
+
+                <!-- Andere Aktionen -->
+                <button class="btn-green" onclick="window.location.href='datenuser.php'">Meine Daten</button>
+                <button class="btn-green" onclick="window.location.href='kursebuchen.php'">Kurse buchen</button>
+            </div>
         </div>
     </section>
 </body>
