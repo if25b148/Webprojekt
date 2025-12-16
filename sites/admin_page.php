@@ -18,15 +18,15 @@ if (!isset($_SESSION['email' ])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page</title>
-    <link rel="../css/stylesheet" href="style.css">
+   <link rel="stylesheet" href="..\css\style.css">
 </head>
 
-<body style="background:#fff;">
+<body>
 
     <div class="boxAdminUser">
         <h1 class="h1welcome">Welcome, <span><?= $_SESSION['vorname']; ?></span></h1>
         <p>This is an <span class="welcomespan">admin</span> page</p>
-        <button onclick=window.location.href='logout.php"">Logout</button>
+        <button onclick=window.location.href='logout.php'>Logout</button>
     </div>
 
 </body>

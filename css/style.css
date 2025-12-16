@@ -319,25 +319,11 @@ color:#a42834;
 text-align: center;
 margin-bottom: 20px;
 }
+/* userpage */
 
-.boxAdminUser p
-{
- font-size: 22px;;
-}
 
-.h1welcome{
-    font-size: 50px;
-}
 
-.welcomespan {
-    color:#3a5f4e;
-}
 
-.boxAdminUser button{
-    display: block;
-    width: 300px;
-    margin: 0 auto;
-}
 
 /* FAQ CONTENT BOX */
         .faq-box {
@@ -456,3 +442,4 @@ margin-bottom: 20px;
     text-decoration: underline; /* Unterstrich beim Hover */
 }
 
+/* User-Daten Formular */

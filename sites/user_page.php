@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-if (!isset($_SESSION['email' ])) {
+if (!isset($_SESSION['email'])) {
     header("Location: login.php");
     exit();
 }
@@ -18,16 +18,21 @@ if (!isset($_SESSION['email' ])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Page</title>
-    <link rel="../css/stylesheet" href="style.css">
+   <link rel="stylesheet" href="..\css\style.css">
 </head>
 
-<body style="background:#fff;">
+<body>
 
-    <div class="boxAdminUser">
-        <h1 class="h1welcome">Welcome, <span><?= $_SESSION['vorname']; ?></span></h1>
-        <p>This is an <span class="welcomespan">user</span> page</p>
-        <button onclick=window.location.href='logout.php"">Logout</button>
-    </div>
+    <section class="userpagesection">
+        <div class="boxAdminUser">
+            <h1>Willkommen, <span><?= $_SESSION['vorname']; ?></span></h1>
+            <p>Du bist erfolgreich eingelogt</p>
+            <button onclick=window.location.href='logout.php'>Logout</button>
+            <button onclick="window.location.href='datenuser.php'">Meine Daten</button>
+            <button onclick="window.location.href='kursebuchen.php'">Kurse buchen</button>
+
+        </div>
+    </section>
 
 </body>
 </html>
