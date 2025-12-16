@@ -34,10 +34,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("sssss", $vorname, $nachname, $email, $password, $user_email);
 
     if ($stmt->execute()) {
-        $_SESSION['email'] = $email;
-        $user_email = $email;
-        $user = compact('vorname', 'nachname', 'email') + $user;
-        $message = "Daten erfolgreich aktualisiert!";
+    $_SESSION['email'] = $email;
+    $user_email = $email;
+
+    // $user sauber aktualisieren, password behalten
+    $user['vorname']  = $vorname;
+    $user['nachname'] = $nachname;
+    $user['email']    = $email;
+    // $user['password'] bleibt unverändert, falls nicht geändert
+
+    $message = "Daten erfolgreich aktualisiert!";
     } else {
         $message = "Fehler beim Aktualisieren der Daten!";
     }
