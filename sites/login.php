@@ -43,7 +43,7 @@ return $formName === $activeForm ? 'active' : '';
         </a>
         <nav>
             <ul>
-                <li><a href="kursinfos.html">Kurse</a></li>
+                <li><a href="kursinfos.php">Kurse</a></li>
                 <li><a href="ueberuns.html">Über uns</a></li>
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="kontakt.html">Kontakt</a></li>
