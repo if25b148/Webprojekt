@@ -444,5 +444,29 @@ margin-bottom: 20px;
 
 /* User-Daten Formular */
 
+/* Aufklappen Kursinfos */
+.kurs-box {
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+    overflow: hidden; /* wichtig für smooth expand */
+    transition: all 0.3s ease;
+}
+
+.kurs-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, margin 0.3s ease;
+    margin-top: 0;
+}
+
+.kurs-title {
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+
 
 

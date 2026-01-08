@@ -42,17 +42,28 @@ if($result && $result->num_rows > 0){
         <div class="kurs-grid">
             <?php if(!empty($courses)): ?>
                 <?php foreach($courses as $course): ?>
-                    <div class="kurs-box">
-                        <strong>Kurs:</strong> <?= htmlspecialchars($course['kurs']) ?><br>
-                        <strong>Niveau:</strong> <?= htmlspecialchars($course['niveau']) ?><br>
-                        <strong>Dauer:</strong> <?= htmlspecialchars($course['dauer']) ?><br>
-                        <strong>Lernmaterialien:</strong> <?= nl2br(htmlspecialchars($course['lernmaterialien'])) ?><br>
-                        <strong>Zusatzmaterialien:</strong> <?= nl2br(htmlspecialchars($course['zusatzmaterialien'])) ?><br>
-                        <strong>Termin Erstberatung:</strong> <?= nl2br(htmlspecialchars($course['termin_erstberatung'])) ?><br>
-                        <strong>Ort:</strong> <?= htmlspecialchars($course['ort']) ?><br>
-                        <strong>Lehrkraft:</strong> <?= htmlspecialchars($course['lehrkraft']) ?><br>
+                    <div class="kurs-box kurs-item">
+
+                        <!-- Sichtbar -->
+                        <div class="kurs-title">
+                            <?= htmlspecialchars($course['kurs']) ?>
+                        </div>
+
+                        <!-- Versteckt -->
+                        <div class="kurs-details">
+                            <p><strong>Niveau:</strong> <?= htmlspecialchars($course['niveau']) ?></p>
+                            <p><strong>Dauer:</strong> <?= htmlspecialchars($course['dauer']) ?></p>
+                            <p><strong>Lernmaterialien:</strong> <?= nl2br(htmlspecialchars($course['lernmaterialien'])) ?></p>
+                            <p><strong>Zusatzmaterialien:</strong> <?= nl2br(htmlspecialchars($course['zusatzmaterialien'])) ?></p>
+                            <p><strong>Termin Erstberatung:</strong> <?= nl2br(htmlspecialchars($course['termin_erstberatung'])) ?></p>
+                            <p><strong>Ort:</strong> <?= htmlspecialchars($course['ort']) ?></p>
+                            <p><strong>Lehrkraft:</strong> <?= htmlspecialchars($course['lehrkraft']) ?></p>
+                        </div>
+
                     </div>
                 <?php endforeach; ?>
+
+
             <?php else: ?>
                 <p>Es sind derzeit keine Kurse verfügbar.</p>
             <?php endif; ?>
@@ -68,5 +79,6 @@ if($result && $result->num_rows > 0){
           <li><a href="impressum.html">Impressum</a></li>
       </ul>
   </footer>
+  <script src="script.js"></script>
 </body>
 </html>
