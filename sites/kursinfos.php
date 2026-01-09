@@ -11,7 +11,6 @@ if($result && $result->num_rows > 0){
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -34,8 +33,7 @@ if($result && $result->num_rows > 0){
             </ul>
         </nav>
   </header>
-
-  <main>
+<main>
     <section>
         <h1 class="h2angeboteKurse">Angebotene Kurse</h1>
 
@@ -80,6 +78,5 @@ if($result && $result->num_rows > 0){
       </ul>
   </footer>
   <script src="script.js"></script>
-  
 </body>
 </html>

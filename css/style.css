@@ -428,7 +428,7 @@ margin-bottom: 20px;
     color: hsl(0, 14%, 13%);           /* Textfarbe Braun */
     text-decoration: none;   /* Standard: nicht unterstrichen */
     font-weight: bold;       /* optional: fett */
-    cursor: pointer;  
+    cursor: pointer;
 }
 .kontaktKurse:hover {
     text-decoration: underline; /* Unterstrich beim Hover */
@@ -438,32 +438,31 @@ margin-bottom: 20px;
 
 /* Aufklappen Kursinfos */
 .kurs-box {
-    background: #d3f0e0;
-    color: hsl(0, 14%, 13%);
-    padding: 20px;
-    font-size: 18px;
-    text-align: left;
     border: 1px solid #333;
     border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+    overflow: hidden;
     transition: all 0.3s ease;
 }
 
-
 .kurs-details {
-    display: none;  /* wie FAQ */
-    margin-top: 10px;
-    max-height: none; /* aufheben */
-    overflow: visible; /* aufheben */
-    transition: none;  /* aufheben */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, margin 0.3s ease;
+    margin-top: 0;
+    -webkit-transition: max-height 0.3s ease, margin 0.3s ease;
+    -moz-transition: max-height 0.3s ease, margin 0.3s ease;
+    -ms-transition: max-height 0.3s ease, margin 0.3s ease;
+    -o-transition: max-height 0.3s ease, margin 0.3s ease;
 }
-
-
 
 .kurs-title {
     font-weight: bold;
     cursor: pointer;
     font-size: 1.2em;
 }
+
 
 /* Datenschutz Layout */
 .datenschutz-layout {
