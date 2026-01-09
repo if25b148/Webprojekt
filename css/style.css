@@ -467,6 +467,127 @@ margin-bottom: 20px;
     font-size: 1.2em;
 }
 
+/* Datenschutz Layout */
+.datenschutz-layout {
+    display: grid;
+    grid-template-columns: 1fr 3fr; /* 1/4 links, 3/4 rechts */
+    gap: 40px;
+    padding: 40px;
+    align-items: start;
+}
+
+.datenschutz-title h1 {
+    font-size: 2.2rem;
+    line-height: 1.2;
+}
+
+.datenschutz-content h2 {
+    margin-top: 30px;
+    font-size: 1.3rem;
+}
+
+.datenschutz-content p {
+    margin-top: 10px;
+    line-height: 1.6;
+    max-width: 800px;
+}
 
 
+/* Container für linke Überschrift + rechten Inhalt */
+.info-layout {
+    display: flex;           /* Flexbox für 2 Spalten */
+    align-items: flex-start; /* obere Kante ausrichten */
+    gap: 40px;               /* Abstand zwischen links und rechts */
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+/* Linke Spalte */
+.info-sidebar {
+    flex: 0 0 250px;        /* feste Breite */
+}
+
+.info-sidebar h1 {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    color: #1a5d4f;
+    margin-top: 0;
+}
+
+/* Rechte Spalte */
+.info-content {
+    flex: 1;                /* füllt verbleibenden Platz */
+}
+
+.info-content h2 {
+    margin-top: 25px;
+    font-size: 1.3rem;
+    color: #1a5d4f;
+}
+
+.info-content p {
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+/* Responsive für Smartphones/Tablets */
+@media (max-width: 900px) {
+    .info-layout {
+        flex-direction: column;
+    }
+
+    .info-sidebar {
+        margin-bottom: 20px;
+    }
+}
+
+
+/* Layout für AGB, Impressum, Datenschutz */
+.info-layout {
+    display: flex;           /* 2 Spalten */
+    align-items: flex-start; /* oben ausrichten */
+    gap: 40px;               /* Abstand zwischen links und rechts */
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.info-sidebar {
+    flex: 0 0 250px;        /* feste Breite links */
+}
+
+.info-sidebar h1 {
+    font-size: 2.2rem;
+    color: #1a5d4f;
+    margin-top: 0;
+}
+
+.info-content {
+    flex: 1;                /* füllt restlichen Platz */
+}
+
+.info-content h2 {
+    margin-top: 25px;
+    font-size: 1.3rem;
+    color: #1a5d4f;
+}
+
+.info-content p {
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+/* Responsive: auf kleinen Bildschirmen untereinander */
+@media (max-width: 900px) {
+    .info-layout {
+        flex-direction: column;
+    }
+
+    .info-sidebar {
+        margin-bottom: 20px;
+    }
+}
 
