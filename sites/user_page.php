@@ -111,7 +111,7 @@ if (!isset($_SESSION['email'])) {
 
                 <!-- Andere Aktionen -->
                 <button class="btn-green" onclick="window.location.href='datenuser.php'">Meine Daten</button>
-                <button class="btn-green" onclick="window.location.href='kursebuchen.php'">Kurse buchen</button>
+                <button class="btn-green" onclick="window.location.href='meine_kurse.php'">Meine Kurse</button>
             </div>
         </div>
     </section>
