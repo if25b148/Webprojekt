@@ -1,36 +1,33 @@
 <?php
-require 'config.php';
-session_start();
+require 'config.php'; // DB-Verbindung + session_start()
 
-$courseId = $_GET['course_id'] ?? null;
+// 1. Prüfen: Nutzer eingeloggt?
+if (!isset($_SESSION['user_id'])) {
+    die('Bitte zuerst einloggen.');
+}
 
-if (!$courseId) {
+// 2. Prüfen: Kurs-ID vorhanden?
+if (!isset($_GET['course_id'])) {
     die('Kein Kurs ausgewählt.');
 }
 
-// Prüfen, ob der Nutzer eingeloggt ist
-if (!isset($_SESSION['user_id'])) {
-    // Zur Login-Seite mit Rückkehr zur Buchung
-    header("Location: login.php?return_url=" . urlencode("kursebuchen.php?course_id=$courseId"));
-    exit();
+$userId   = $_SESSION['user_id'];
+$courseId = $_GET['course_id'];
+
+// 3. Prüfen: Nutzer bereits für den Kurs angemeldet?
+$stmt = $pdo->prepare(
+    "SELECT 1 FROM enrollments WHERE user_id = ? AND course_id = ?"
+);
+$stmt->execute([$userId, $courseId]);
+
+if ($stmt->rowCount() === 0) {
+    // 4. Anmeldung speichern
+    $stmt = $pdo->prepare(
+        "INSERT INTO enrollments (user_id, course_id) VALUES (?, ?)"
+    );
+    $stmt->execute([$userId, $courseId]);
 }
 
-$userId = $_SESSION['user_id'];
-
-// Prüfen, ob der Nutzer bereits angemeldet ist
-$stmt = $conn->prepare("SELECT 1 FROM enrollments WHERE user_id = ? AND course_id = ?");
-$stmt->bind_param("ii", $userId, $courseId);
-$stmt->execute();
-$result = $stmt->get_result();
-
-if ($result->num_rows === 0) {
-    $stmt = $conn->prepare("INSERT INTO enrollments (user_id, course_id) VALUES (?, ?)");
-    $stmt->bind_param("ii", $userId, $courseId);
-    $stmt->execute();
-}
-
-$stmt->close();
-
-// Weiterleitung nach Buchung
-header("Location: meine_kurse.php");
-exit();
+// 5. Weiterleitung (z. B. zur Nutzerseite)
+header('Location: user_page.php');
+exit;

@@ -11,7 +11,6 @@ if($result && $result->num_rows > 0){
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -34,8 +33,7 @@ if($result && $result->num_rows > 0){
             </ul>
         </nav>
   </header>
-
-  <main>
+<main>
     <section>
         <h1 class="h2angeboteKurse">Angebotene Kurse</h1>
 
@@ -58,6 +56,10 @@ if($result && $result->num_rows > 0){
                             <p><strong>Termin Erstberatung:</strong> <?= nl2br(htmlspecialchars($course['termin_erstberatung'])) ?></p>
                             <p><strong>Ort:</strong> <?= htmlspecialchars($course['ort']) ?></p>
                             <p><strong>Lehrkraft:</strong> <?= htmlspecialchars($course['lehrkraft']) ?></p>
+                              <form action="kursebuchen.php" method="get">
+                                     <input type="hidden" name="kurs" value="<?= htmlspecialchars($course['kurs']) ?>">
+                                    <button type="submit" class="HomeBuchen">Kurs buchen</button>
+                             </form>
                         </div>
 
                         <!-- Optional: Button zum Buchen -->
