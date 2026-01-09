@@ -370,15 +370,7 @@ margin-bottom: 20px;
             padding: 0 60px;
         }
 
-        .kurs-box {
-            background: #d3f0e0;
-            color: hsl(0, 14%, 13%);
-            padding: 70px 20px 0px 20px;
-            height: 150px;
-            font-size: 18px;
-            text-align: center;
-
-        }
+        
 
         .kurs-box a {
             color: hsl(0, 14%, 13%);
@@ -446,20 +438,26 @@ margin-bottom: 20px;
 
 /* Aufklappen Kursinfos */
 .kurs-box {
+    background: #d3f0e0;
+    color: hsl(0, 14%, 13%);
+    padding: 20px;
+    font-size: 18px;
+    text-align: left;
     border: 1px solid #333;
     border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 15px;
-    overflow: hidden; /* wichtig für smooth expand */
     transition: all 0.3s ease;
 }
 
+
 .kurs-details {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease, margin 0.3s ease;
-    margin-top: 0;
+    display: none;  /* wie FAQ */
+    margin-top: 10px;
+    max-height: none; /* aufheben */
+    overflow: visible; /* aufheben */
+    transition: none;  /* aufheben */
 }
+
+
 
 .kurs-title {
     font-weight: bold;

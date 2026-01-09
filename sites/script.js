@@ -14,24 +14,15 @@ document.querySelectorAll('.question').forEach(q => {
 });
 
 //fuer Seite kursinfos.php, damit die Informationen zum Kurs aufgeklappt werden
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.kurs-item').forEach(item => {
-        const title = item.querySelector('.kurs-title');
-        const details = item.querySelector('.kurs-details');
-
-        title.addEventListener('click', () => {
-            if(item.classList.contains('active')){
-                // schließen
-                details.style.maxHeight = '0px';
-                item.classList.remove('active');
-            } else {
-                // öffnen: ScrollHeight exakt setzen
-                details.style.maxHeight = details.scrollHeight + "px";
-                item.classList.add('active');
-            }
-        });
+document.querySelectorAll('.kurs-title').forEach(title => {
+    title.addEventListener('click', () => {
+        const details = title.nextElementSibling;
+        // Toggle wie FAQ
+        details.style.display = (details.style.display === "block") ? "none" : "block";
     });
 });
+
+
 
 
 

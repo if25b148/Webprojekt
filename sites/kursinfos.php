@@ -80,5 +80,6 @@ if($result && $result->num_rows > 0){
       </ul>
   </footer>
   <script src="script.js"></script>
+  
 </body>
 </html>
