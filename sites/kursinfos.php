@@ -44,12 +44,12 @@ if($result && $result->num_rows > 0){
                 <?php foreach($courses as $course): ?>
                     <div class="kurs-box kurs-item">
 
-                        <!-- Sichtbar -->
+                        <!-- Sichtbar: Kursname -->
                         <div class="kurs-title">
                             <?= htmlspecialchars($course['kurs']) ?>
                         </div>
 
-                        <!-- Versteckt -->
+                        <!-- Versteckt: Details -->
                         <div class="kurs-details">
                             <p><strong>Niveau:</strong> <?= htmlspecialchars($course['niveau']) ?></p>
                             <p><strong>Dauer:</strong> <?= htmlspecialchars($course['dauer']) ?></p>
@@ -60,10 +60,13 @@ if($result && $result->num_rows > 0){
                             <p><strong>Lehrkraft:</strong> <?= htmlspecialchars($course['lehrkraft']) ?></p>
                         </div>
 
+                        <!-- Optional: Button zum Buchen -->
+                        <p>
+                            <a href="kursebuchen.php?course_id=<?= $course['id'] ?>" class="buchungslink">Jetzt buchen</a>
+                        </p>
+
                     </div>
                 <?php endforeach; ?>
-
-
             <?php else: ?>
                 <p>Es sind derzeit keine Kurse verfügbar.</p>
             <?php endif; ?>
@@ -79,6 +82,24 @@ if($result && $result->num_rows > 0){
           <li><a href="impressum.html">Impressum</a></li>
       </ul>
   </footer>
-  <script src="script.js"></script>
+
+  <!-- Script zum Aufklappen der Kursdetails -->
+  <script>
+      const items = document.querySelectorAll('.kurs-item');
+      items.forEach(item => {
+          const title = item.querySelector('.kurs-title');
+          const details = item.querySelector('.kurs-details');
+          details.style.display = 'none';
+          title.style.cursor = 'pointer';
+          title.addEventListener('click', () => {
+              if(details.style.display === 'none'){
+                  details.style.display = 'block';
+              } else {
+                  details.style.display = 'none';
+              }
+          });
+      });
+  </script>
+
 </body>
 </html>

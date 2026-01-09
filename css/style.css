@@ -591,3 +591,22 @@ margin-bottom: 20px;
     }
 }
 
+
+/* Kurs-Anmelde-Button */
+.kurs-box .enroll-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #4CAF50; /* Grüner Button */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.kurs-box .enroll-btn:hover {
+    background-color: #45a049; /* dunkleres Grün beim Hover */
+}
