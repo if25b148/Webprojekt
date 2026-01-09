@@ -18,13 +18,13 @@ if (!isset($_SESSION['user_id'])) {
 $userId = $_SESSION['user_id'];
 
 // Prüfen, ob der Nutzer bereits angemeldet ist
-$stmt = $conn->prepare("SELECT 1 FROM course_registrations WHERE user_id = ? AND course_id = ?");
+$stmt = $conn->prepare("SELECT 1 FROM enrollments WHERE user_id = ? AND course_id = ?");
 $stmt->bind_param("ii", $userId, $courseId);
 $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows === 0) {
-    $stmt = $conn->prepare("INSERT INTO course_registrations (user_id, course_id) VALUES (?, ?)");
+    $stmt = $conn->prepare("INSERT INTO enrollments (user_id, course_id) VALUES (?, ?)");
     $stmt->bind_param("ii", $userId, $courseId);
     $stmt->execute();
 }
