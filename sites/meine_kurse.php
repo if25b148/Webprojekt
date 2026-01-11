@@ -54,21 +54,16 @@ $stmt->close();
             box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
 
-        .kurs-box h3 {
-            margin: 0 0 0.5rem 0;
-        }
-
-        .kurs-details p {
-            margin: 0.2rem 0;
+       .kurs-box h3 {
+         margin: 0 0 0.5rem 0;
         }
 
         .kurs-link {
-            display: inline-block;
-            margin-top: 0.5rem;
-            text-decoration: none;
-            color: #0066cc;
-            font-weight: bold;
-        }
+         display: inline-block;
+         text-decoration: none;
+         color: #0066cc;
+        font-weight: bold;
+    }
 
         .kurs-link:hover {
             text-decoration: underline;
@@ -92,28 +87,20 @@ $stmt->close();
         <h1>Meine Kurse</h1>
 
         <div class="kurs-grid">
-            <?php if(!empty($courses)): ?>
-                <?php foreach($courses as $course): ?>
-                    <div class="kurs-box">
-                        <h3><?= htmlspecialchars($course['kurs']) ?></h3>
-                        <div class="kurs-details">
-                            <p><strong>Niveau:</strong> <?= htmlspecialchars($course['niveau']) ?></p>
-                            <p><strong>Dauer:</strong> <?= htmlspecialchars($course['dauer']) ?></p>
-                            <p><strong>Lernmaterialien:</strong> <?= nl2br(htmlspecialchars($course['lernmaterialien'])) ?></p>
-                            <?php if(!empty($course['zusatzmaterialien'])): ?>
-                                <p><strong>Zusatzmaterialien:</strong> <?= nl2br(htmlspecialchars($course['zusatzmaterialien'])) ?></p>
-                            <?php endif; ?>
-                            <p><strong>Termin Erstberatung:</strong> <?= nl2br(htmlspecialchars($course['termin_erstberatung'])) ?></p>
-                            <p><strong>Ort:</strong> <?= htmlspecialchars($course['ort']) ?></p>
-                            <p><strong>Lehrkraft:</strong> <?= htmlspecialchars($course['lehrkraft']) ?></p>
-                            <a href="#" class="kurs-link">Zu den Lernmaterialien</a>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p>Du bist für derzeit keinen Kurs angemeldet.</p>
-            <?php endif; ?>
-        </div>
+    <?php if(!empty($courses)): ?>
+        <?php foreach($courses as $course): ?>
+            <div class="kurs-box">
+                <h3><?= htmlspecialchars($course['kurs']) ?></h3>
+                <a href="user_materialienzugriff.php?course_id=<?= $course['id'] ?>" class="kurs-link">
+                    Zu den Lernmaterialien
+                </a>
+            </div>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p>Du bist für derzeit keinen Kurs angemeldet.</p>
+    <?php endif; ?>
+</div>
+
     </section>
   </main>
 
