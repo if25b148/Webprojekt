@@ -25,7 +25,7 @@ main {
 section {
     width: 80%;
     background: #b0e6c7;
-    
+    display: flex;
     justify-content: flex-start; /* ← richtiger Wert */
     align-items: center;
     padding: 20px;
