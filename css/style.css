@@ -25,7 +25,7 @@ main {
 section {
     width: 80%;
     background: #b0e6c7;
-    display: flex;
+    
     justify-content: flex-start; /* ← richtiger Wert */
     align-items: center;
     padding: 20px;
@@ -484,103 +484,12 @@ margin-bottom: 20px;
 }
 
 
-/* Container für linke Überschrift + rechten Inhalt */
-.info-layout {
-    display: flex;           /* Flexbox für 2 Spalten */
-    align-items: flex-start; /* obere Kante ausrichten */
-    gap: 40px;               /* Abstand zwischen links und rechts */
-    max-width: 1200px;
-    margin: 40px auto;
-}
-
-/* Linke Spalte */
-.info-sidebar {
-    flex: 0 0 250px;        /* feste Breite */
-}
-
-.info-sidebar h1 {
-    font-size: 2.2rem;
-    line-height: 1.2;
-    color: #1a5d4f;
-    margin-top: 0;
-}
-
-/* Rechte Spalte */
-.info-content {
-    flex: 1;                /* füllt verbleibenden Platz */
-}
-
-.info-content h2 {
-    margin-top: 25px;
-    font-size: 1.3rem;
-    color: #1a5d4f;
-}
-
-.info-content p {
-    margin-top: 10px;
-    line-height: 1.6;
-}
-
-/* Responsive für Smartphones/Tablets */
-@media (max-width: 900px) {
-    .info-layout {
-        flex-direction: column;
-    }
-
-    .info-sidebar {
-        margin-bottom: 20px;
-    }
-}
 
 
-/* Layout für AGB, Impressum, Datenschutz */
-.info-layout {
-    display: flex;           /* 2 Spalten */
-    align-items: flex-start; /* oben ausrichten */
-    gap: 40px;               /* Abstand zwischen links und rechts */
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
 
-.info-sidebar {
-    flex: 0 0 250px;        /* feste Breite links */
-}
 
-.info-sidebar h1 {
-    font-size: 2.2rem;
-    color: #1a5d4f;
-    margin-top: 0;
-}
 
-.info-content {
-    flex: 1;                /* füllt restlichen Platz */
-}
 
-.info-content h2 {
-    margin-top: 25px;
-    font-size: 1.3rem;
-    color: #1a5d4f;
-}
-
-.info-content p {
-    margin-top: 10px;
-    line-height: 1.6;
-}
-
-/* Responsive: auf kleinen Bildschirmen untereinander */
-@media (max-width: 900px) {
-    .info-layout {
-        flex-direction: column;
-    }
-
-    .info-sidebar {
-        margin-bottom: 20px;
-    }
-}
 
 /*kursbuchen.php intern*/
 
@@ -629,4 +538,45 @@ margin-bottom: 20px;
 
 .kurs-box .enroll-btn:hover {
     background-color: #45a049; /* dunkleres Grün beim Hover */
+}
+
+/* Section für einfache Inhalte wie Impressum oder Kursliste */
+.sectionfuerimpressum {
+    max-width: 800px;       /* nicht zu breit */
+    margin: 40px auto;      /* zentriert auf der Seite */
+    padding: 20px;          /* innenabstand */
+    background-color: #b0e6c7; /* sanfter Hintergrund */
+    border-radius: 8px;     /* leicht abgerundete Ecken */
+    color: hsl(0, 14%, 13%);
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Section für einfache Inhalte wie Impressum oder Kursliste */
+/* Überschreibe alles, was flex macht */
+.sectionfuerimpressum {
+    display: block;       /* block = normaler Fluss */
+    width: auto;          /* nicht 80%, volle Breite oder passend */
+    padding: 20px;
+    margin: 40px auto;    /* zentriert, optional */
+    background-color: #b0e6c7;
+    color: hsl(0, 14%, 13%);
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    gap: 0;               /* flex-Gap auf 0 */
+    justify-content: unset;  /* Flex-Eigenschaften zurücksetzen */
+    align-items: unset;
+}
+
+
+/* Überschriften innerhalb der Section */
+.sectionfuerimpressum h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #261d1d;
+}
+
+/* Absätze */
+.sectionfuerimpressum p {
+    margin: 5px 0 15px 0;  /* kleiner Abstand zwischen Absätzen */
 }
