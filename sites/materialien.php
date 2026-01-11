@@ -17,6 +17,7 @@ $message = "";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $course_id = intval($_POST['course_id']);
+
     $allowedTypes = [
         'application/pdf',
         'application/zip',
@@ -36,9 +37,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $message = "Dateityp nicht erlaubt.";
         } else {
 
-            $uploadDir = "uploads/courses/";
+            /* Kurs-Ordner definieren */
+            $courseDir = __DIR__ . "/uploads/courses/course_" . $course_id . "/";
+
+            /* Ordner anlegen, falls nicht vorhanden */
+            if (!is_dir($courseDir)) {
+                mkdir($courseDir, 0755, true);
+            }
+
+            /* Sicherer Dateiname */
             $safeName = time() . "_" . basename($file['name']);
-            $targetPath = $uploadDir . $safeName;
+
+            /* Server-Zielpfad */
+            $targetPath = $courseDir . $safeName;
+
+            /* Pfad für Datenbank (relativ!) */
+            $dbPath = "uploads/courses/course_$course_id/" . $safeName;
 
             if (move_uploaded_file($file['tmp_name'], $targetPath)) {
 
@@ -46,13 +60,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     "INSERT INTO materials (course_id, filename, filepath, filetype)
                      VALUES (?, ?, ?, ?)"
                 );
+
                 $stmt->bind_param(
                     "isss",
                     $course_id,
                     $file['name'],
-                    $targetPath,
+                    $dbPath,
                     $file['type']
                 );
+
                 $stmt->execute();
 
                 $message = "Material erfolgreich hochgeladen.";
@@ -82,6 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <form method="post" enctype="multipart/form-data">
             <label><strong>Kurs auswählen:</strong></label><br><br>
+
             <select name="course_id" required>
                 <?php while ($c = $courses->fetch_assoc()): ?>
                     <option value="<?= $c['id'] ?>">
