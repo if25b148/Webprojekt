@@ -117,6 +117,7 @@ if (!isset($_SESSION['role'])) {
                 <button class="btn-red" onclick="window.location.href='logout.php'">Logout</button>
                 <button class="btn-green" onclick="window.location.href='admindatenverwaltung.php'">User Daten verwalten</button>
                 <button class="btn-green" onclick="window.location.href='kurseerstellen.php'">Kurse erstellen</button>
+                <button class="btn-green" onclick="window.location.href='materialien.php'">Kursmaterialien hochladen</button>
             </div>
         </div>
     </section>
