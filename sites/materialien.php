@@ -1,77 +1,103 @@
 <?php
-require 'config.php'; // DB + session_start()
+session_start();
+require_once 'config.php';
 
-// 1. Prüfen: Nutzer eingeloggt?
-if(!isset($_SESSION['user_id'])){
-    die('Bitte zuerst einloggen.');
+/* Nur Admin */
+if (!isset($_SESSION['email']) || ($_SESSION['role'] ?? '') !== 'admin') {
+    header("Location: login.php");
+    exit;
 }
 
-// 2. Prüfen: Kurs-ID vorhanden?
-if(!isset($_GET['course_id'])){
-    die('Kein Kurs ausgewählt.');
+/* Kurse laden */
+$courses = $conn->query("SELECT id, kurs FROM courses");
+
+/* Upload-Logik */
+$message = "";
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $course_id = intval($_POST['course_id']);
+    $allowedTypes = [
+        'application/pdf',
+        'application/zip',
+        'image/jpeg',
+        'image/png',
+        'audio/mpeg',
+        'audio/wav'
+    ];
+
+    if (!isset($_FILES['material']) || $_FILES['material']['error'] !== 0) {
+        $message = "Datei-Upload fehlgeschlagen.";
+    } else {
+
+        $file = $_FILES['material'];
+
+        if (!in_array($file['type'], $allowedTypes)) {
+            $message = "Dateityp nicht erlaubt.";
+        } else {
+
+            $uploadDir = "uploads/courses/";
+            $safeName = time() . "_" . basename($file['name']);
+            $targetPath = $uploadDir . $safeName;
+
+            if (move_uploaded_file($file['tmp_name'], $targetPath)) {
+
+                $stmt = $conn->prepare(
+                    "INSERT INTO materials (course_id, filename, filepath, filetype)
+                     VALUES (?, ?, ?, ?)"
+                );
+                $stmt->bind_param(
+                    "isss",
+                    $course_id,
+                    $file['name'],
+                    $targetPath,
+                    $file['type']
+                );
+                $stmt->execute();
+
+                $message = "Material erfolgreich hochgeladen.";
+            } else {
+                $message = "Datei konnte nicht gespeichert werden.";
+            }
+        }
+    }
 }
-
-$userId = $_SESSION['user_id'];
-$courseId = $_GET['course_id'];
-
-// 3. Prüfen: Nutzer ist für den Kurs angemeldet
-$stmt = $pdo->prepare("
-    SELECT 1 FROM enrollments 
-    WHERE user_id = ? AND course_id = ?
-");
-$stmt->execute([$userId, $courseId]);
-
-if($stmt->rowCount() === 0){
-    die('Sie sind für diesen Kurs nicht angemeldet.');
-}
-
-// 4. Materialien für den Kurs abrufen
-$stmt = $pdo->prepare("
-    SELECT * FROM materials 
-    WHERE course_id = ?
-");
-$stmt->execute([$courseId]);
-$materials = $stmt->fetchAll();
 ?>
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Materialien</title>
+    <title>Kursmaterialien hochladen</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body style="background-color:#b0e6c7;">
-  <header>
-    <a href="../index.html"><img src="../img/logo.png" alt="Logo" class="imglogo"></a>
-    <nav>
-      <ul>
-        <li><a href="kursinfos.php">Kurse</a></li>
-        <li><a href="ueberuns.html">Über uns</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-        <li><a href="impressum.html">Impressum</a></li>
-        <li><a href="logout.php">Logout</a></li>
-      </ul>
-    </nav>
-  </header>
+<body>
 
-  <main>
-    <h1>Materialien zum Kurs</h1>
-    <?php if(count($materials) === 0): ?>
-        <p>Für diesen Kurs sind aktuell keine Materialien verfügbar.</p>
-    <?php else: ?>
-        <ul>
-        <?php foreach($materials as $m): ?>
-            <li>
-                <?= htmlspecialchars($m['filename']) ?> -
-                <a href="<?= htmlspecialchars($m['path']) ?>" download>Herunterladen</a>
-            </li>
-        <?php endforeach; ?>
-        </ul>
-    <?php endif; ?>
-    <a href="kursinfos.php" class="button">Zurück zu den Kursen</a>
-  </main>
+<main class="internbuchung">
+    <div class="internbuchung-box">
+        <h1>Kursmaterial hochladen</h1>
+
+        <?php if ($message): ?>
+            <p><?= htmlspecialchars($message) ?></p>
+        <?php endif; ?>
+
+        <form method="post" enctype="multipart/form-data">
+            <label><strong>Kurs auswählen:</strong></label><br><br>
+            <select name="course_id" required>
+                <?php while ($c = $courses->fetch_assoc()): ?>
+                    <option value="<?= $c['id'] ?>">
+                        <?= htmlspecialchars($c['kurs']) ?>
+                    </option>
+                <?php endwhile; ?>
+            </select><br><br>
+
+            <input type="file" name="material" required><br><br>
+
+            <button type="submit" class="HomeBuchen">
+                Hochladen
+            </button>
+        </form>
+    </div>
+</main>
+
 </body>
 </html>
