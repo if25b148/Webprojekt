@@ -540,43 +540,4 @@ margin-bottom: 20px;
     background-color: #45a049; /* dunkleres Grün beim Hover */
 }
 
-/* Section für einfache Inhalte wie Impressum oder Kursliste */
-.sectionfuerimpressum {
-    max-width: 800px;       /* nicht zu breit */
-    margin: 40px auto;      /* zentriert auf der Seite */
-    padding: 20px;          /* innenabstand */
-    background-color: #b0e6c7; /* sanfter Hintergrund */
-    border-radius: 8px;     /* leicht abgerundete Ecken */
-    color: hsl(0, 14%, 13%);
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-}
 
-/* Section für einfache Inhalte wie Impressum oder Kursliste */
-/* Überschreibe alles, was flex macht */
-.sectionfuerimpressum {
-    display: block;       /* block = normaler Fluss */
-    width: auto;          /* nicht 80%, volle Breite oder passend */
-    padding: 20px;
-    margin: 40px auto;    /* zentriert, optional */
-    background-color: #b0e6c7;
-    color: hsl(0, 14%, 13%);
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    gap: 0;               /* flex-Gap auf 0 */
-    justify-content: unset;  /* Flex-Eigenschaften zurücksetzen */
-    align-items: unset;
-}
-
-
-/* Überschriften innerhalb der Section */
-.sectionfuerimpressum h3 {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    color: #261d1d;
-}
-
-/* Absätze */
-.sectionfuerimpressum p {
-    margin: 5px 0 15px 0;  /* kleiner Abstand zwischen Absätzen */
-}
