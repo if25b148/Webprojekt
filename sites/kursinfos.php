@@ -84,24 +84,6 @@ if($result && $result->num_rows > 0){
           <li><a href="impressum.html">Impressum</a></li>
       </ul>
   </footer>
-
-  <!-- Script zum Aufklappen der Kursdetails -->
-  <script>
-      const items = document.querySelectorAll('.kurs-item');
-      items.forEach(item => {
-          const title = item.querySelector('.kurs-title');
-          const details = item.querySelector('.kurs-details');
-          details.style.display = 'none';
-          title.style.cursor = 'pointer';
-          title.addEventListener('click', () => {
-              if(details.style.display === 'none'){
-                  details.style.display = 'block';
-              } else {
-                  details.style.display = 'none';
-              }
-          });
-      });
-  </script>
-
+<script src="script.js"></script>
 </body>
 </html>

@@ -449,13 +449,13 @@ margin-bottom: 20px;
 .kurs-details {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease, margin 0.3s ease;
+    transition: max-height 0.3s ease;
     margin-top: 0;
-    -webkit-transition: max-height 0.3s ease, margin 0.3s ease;
-    -moz-transition: max-height 0.3s ease, margin 0.3s ease;
-    -ms-transition: max-height 0.3s ease, margin 0.3s ease;
-    -o-transition: max-height 0.3s ease, margin 0.3s ease;
 }
+.kurs-box.active .kurs-details {
+    /* max-height wird per JS gesetzt */
+}
+
 
 .kurs-title {
     font-weight: bold;
