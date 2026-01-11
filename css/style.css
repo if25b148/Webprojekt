@@ -94,7 +94,7 @@ header {
     transition: 0.3s;
 }
 .anmeldenlink:hover {
-    text-decoration: underline;
+    text-decoration: none;
     color: #877c77eb;       /* etwas dunkler beim Hover */
     background-color: #3a5f4e;  /* optional leichter Hintergrund beim Hover */
 }
@@ -227,7 +227,7 @@ footer ul li a:hover {
 }
 
 .register-link a:hover {
-    text-decoration: underline;
+    text-decoration: none;
     color: #004422;
 }
 /* Registrierungsseite */
@@ -293,7 +293,7 @@ footer ul li a:hover {
 }
 
 .register-gast-link:hover {
-    text-decoration: underline;
+    text-decoration: none;
     color: #004422;
 }
 
@@ -370,11 +370,8 @@ margin-bottom: 20px;
             padding: 0 60px;
         }
 
-        
-
         .kurs-box a {
             color: hsl(0, 14%, 13%);
-            text-decoration: underline;
         }
 
       /* Tabelle bei kursinfos.html */
@@ -431,7 +428,7 @@ margin-bottom: 20px;
     cursor: pointer;
 }
 .kontaktKurse:hover {
-    text-decoration: underline; /* Unterstrich beim Hover */
+    text-decoration: none; /* Unterstrich beim Hover */
 }
 
 /* User-Daten Formular */
