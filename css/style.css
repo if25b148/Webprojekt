@@ -449,9 +449,6 @@ margin-bottom: 20px;
     transition: max-height 0.3s ease;
     margin-top: 0;
 }
-.kurs-box.active .kurs-details {
-    /* max-height wird per JS gesetzt */
-}
 
 
 .kurs-title {
