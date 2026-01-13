@@ -5,15 +5,7 @@ if (!isset($_SESSION['email'])) {
     exit();
 }
 
-// Optional: Wenn die Rolle noch nicht in der Session ist, aus der DB laden
-if (!isset($_SESSION['role'])) {
-    require_once 'config.php';
-    $stmt = $conn->prepare("SELECT role FROM users WHERE email=?");
-    $stmt->bind_param("s", $_SESSION['email']);
-    $stmt->execute();
-    $result = $stmt->get_result()->fetch_assoc();
-    $_SESSION['role'] = $result['role'] ?? 'User';
-}
+
 ?>
 
 <!DOCTYPE html>
