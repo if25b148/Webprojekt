@@ -100,6 +100,7 @@ if (!isset($_SESSION['email'])) {
     </style>
 </head>
 <body>
+    
     <section class="userpagesection">
         <div class="boxAdminUser">
             <h1>Willkommen, <span><?= htmlspecialchars($_SESSION['vorname']); ?></span></h1>

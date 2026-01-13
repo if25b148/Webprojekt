@@ -54,8 +54,8 @@ section .box a {
     color: #3d2307;
 }
 aside {
-    width: 20%;
-    background: #d3f0e0;
+   width: 20%;
+   background: #d3f0e0;
 }
 .HomeBuchen {
     display: inline-block;
@@ -484,13 +484,6 @@ margin-bottom: 20px;
 }
 
 
-
-
-
-
-
-
-
 /*kursbuchen.php intern*/
 
 .internbuchung {
@@ -539,5 +532,4 @@ margin-bottom: 20px;
 .kurs-box .enroll-btn:hover {
     background-color: #45a049; /* dunkleres Grün beim Hover */
 }
-
 

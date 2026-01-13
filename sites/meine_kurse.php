@@ -68,15 +68,22 @@ $stmt->close();
         .kurs-link:hover {
             text-decoration: underline;
         }
+        .meineKursephp{
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 10rem;
+
+        }
     </style>
 </head>
 <body style="background-color:#b0e6c7;">
   <header>
-        <a href="../index.html"><img src="../img/logo.png" alt="Logo" class="imglogo"></a>
+    <img src="../img/logo.png" alt="Logo" class="imglogo">
         <nav>
             <ul>
                 <li><a href="kursinfos.php">Kurse</a></li>
                 <li><a href="user_page.php">Meine Seite</a></li>
+                <li><a href="kontakt.php">Kontakt</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
@@ -102,15 +109,16 @@ $stmt->close();
 </div>
 
     </section>
-  </main>
+   <aside>
+    <div class="meineKursephp"">
+        <h2>Hinweis</h2>
+        <p>
+            Falls du Probleme beim Zugriff auf deine Kurse hast,
+            <a href="kontakt.php">kontaktiere</a> bitte unseren Support.
+        </p>
+    </div>
+</aside>
 
-  <footer>
-      <ul>
-          <li><a href="datenschutzerklaerung.html">Datenschutzerklärung</a></li>
-          <li><a href="agb.html">AGB</a></li>
-          <li><a href="kontakt.php">Kontakt</a></li>
-          <li><a href="impressum.html">Impressum</a></li>
-      </ul>
-  </footer>
+  </main>
 </body>
 </html>
