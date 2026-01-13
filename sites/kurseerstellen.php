@@ -175,7 +175,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
             <div class="form-actions">
                 <button type="submit" class="btn-primary">Kurs erstellen</button>
-                <a href="user_page.php" class="btn-primary">Zurück</a>
+                <a href="admin_page.php" class="btn-primary">Zurück</a>
                 <a href="logout.php" class="btn-primary btn-danger">Logout</a>
             </div>
         </form>
