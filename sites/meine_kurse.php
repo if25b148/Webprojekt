@@ -39,7 +39,7 @@ $stmt->close();
     <title>Meine Kurse</title>
     <link rel="stylesheet" href="../css/style.css">
     <style>
-        /* Einfache Styles für die Kursübersicht */
+        /* css */
         .kurs-grid {
             display: flex;
             flex-direction: column;
@@ -61,7 +61,7 @@ $stmt->close();
         .kurs-link {
          display: inline-block;
          text-decoration: none;
-         color: #0066cc;
+         color: #006644;
         font-weight: bold;
     }
 
@@ -74,18 +74,44 @@ $stmt->close();
             margin-top: 10rem;
 
         }
+
+       .section-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.action-btn {
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    background-color: #006644;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.action-btn:hover {
+    background-color: #006644;
+}
+
+.logout-btn {
+    background-color: #ff0000;
+}
+
+.logout-btn:hover {
+    background-color: #990000;
+}
+
+
+
+
+
     </style>
 </head>
 <body style="background-color:#b0e6c7;">
   <header>
-    <img src="../img/logo.png" alt="Logo" class="imglogo">
         <nav>
-            <ul>
-                <li><a href="kursinfos.php">Kurse</a></li>
-                <li><a href="user_page.php">Meine Seite</a></li>
-                <li><a href="kontakt.php">Kontakt</a></li>
-                <li><a href="logout.php">Logout</a></li>
-            </ul>
+            
         </nav>
   </header>
 
@@ -94,19 +120,25 @@ $stmt->close();
         <h1>Meine Kurse</h1>
 
         <div class="kurs-grid">
-    <?php if(!empty($courses)): ?>
-        <?php foreach($courses as $course): ?>
-            <div class="kurs-box">
-                <h3><?= htmlspecialchars($course['kurs']) ?></h3>
-                <a href="user_materialienzugriff.php?course_id=<?= $course['id'] ?>" class="kurs-link">
-                    Zu den Lernmaterialien
-                </a>
-            </div>
-        <?php endforeach; ?>
-    <?php else: ?>
-        <p>Du bist für derzeit keinen Kurs angemeldet.</p>
-    <?php endif; ?>
-</div>
+            <?php if(!empty($courses)): ?>
+                <?php foreach($courses as $course): ?>
+                    <div class="kurs-box">
+                        <h3><?= htmlspecialchars($course['kurs']) ?></h3>
+                        <a href="user_materialienzugriff.php?course_id=<?= $course['id'] ?>" class="kurs-link">
+                            Zu den Lernmaterialien
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+                <?php else: ?>
+                    <p>Du bist für derzeit keinen Kurs angemeldet.</p>
+                <?php endif; ?>
+        </div>
+        <div class="section-actions">
+            <a href="user_page.php" class="action-btn">Zurückzur Übersicht</a>
+             <a href="kursinfos.php" class="action-btn">Vorhandene Kurse</a>
+            <a href="logout.php" class="action-btn logout-btn">Logout</a>
+         </div>
+
 
     </section>
    <aside>
@@ -117,8 +149,8 @@ $stmt->close();
             <a href="kontakt.php">kontaktiere</a> bitte unseren Support.
         </p>
     </div>
-</aside>
+    </aside>
 
-  </main>
+    </main>
 </body>
 </html>
