@@ -110,18 +110,52 @@ $stmt->close();
             color: #a42834;
             font-weight: bold;
         }
+
+
+        .button-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.button-row a {
+    padding: 12px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.button-row .btn-green {
+    background-color: #006644;
+}
+
+.button-row .btn-green:hover {
+    background-color: #004d33;
+    transform: translateY(-2px);
+}
+
+.button-row .btn-red {
+    background-color: #c0392b;
+}
+
+.button-row .btn-red:hover {
+    background-color: #a93226;
+    transform: translateY(-2px);
+}
+
     </style>
 </head>
 <body style="background-color:#b0e6c7;">
 
 <header>
-    <a href="../index.html"><img src="../img/logo.png" alt="Logo" class="imglogo"></a>
+   
     <nav>
-        <ul>
-            <li><a href="kursinfos.php">Kurse</a></li>
-            <li><a href="meine_kurse.php">Meine Kurse</a></li>
-            <li><a href="logout.php">Logout</a></li>
-        </ul>
+       
     </nav>
 </header>
 
@@ -141,6 +175,12 @@ $stmt->close();
     <?php else: ?>
         <p class="no-material">Für diesen Kurs wurden noch keine Materialien hochgeladen.</p>
     <?php endif; ?>
+
+    
+    <div class="button-row">
+        <a href="meine_kurse.php" class="btn-green">Zurück zu meinen Kursen</a>
+        <a href="logout.php" class="btn-red">Logout</a>
+    </div>
 </main>
 
 </body>
