@@ -59,7 +59,7 @@ function isActiveForm($formName, $activeForm) {
                 <button type="submit" name="login" class="login-btn">Login</button>
             </form>
             <p><a href="passwort_vergessen.php" class="forgot-link">Passwort vergessen?</a></p>
-            <p><a href="gast.html" class="gast-link">Als Gast fortfahren</a></p>
+            <p><a href="../index.html" class="gast-link">Als Gast fortfahren</a></p>
             <p>Haben Sie kein Konto? <a href="#" onclick="showForm('register-form')">Registrieren</a></p>
         </div>
 
