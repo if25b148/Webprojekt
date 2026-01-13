@@ -109,9 +109,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <input type="file" name="material" required><br><br>
 
-            <button type="submit" class="HomeBuchen">
-                Hochladen
-            </button>
+            <button type="submit" class="HomeBuchen">Hochladen</button>
+            <a href="admin_page.php" class="HomeBuchen">Zurück zur Übersicht</a>
+
+  
         </form>
     </div>
 </main>
