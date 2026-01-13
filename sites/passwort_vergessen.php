@@ -44,7 +44,7 @@ if (isset($_POST['reset'])) {
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="kontakt.php">Kontakt</a></li>
                 <li><a href="impressum.html">Impressum</a></li>
-                 <li></li><a href="login.php" class="anmeldenlink">Login</a></li>
+                <li><a href="login.php" class="anmeldenlink">Login</a></li>
             </ul>
         </nav>
        
