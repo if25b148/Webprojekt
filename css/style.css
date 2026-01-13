@@ -533,3 +533,11 @@ margin-bottom: 20px;
     background-color: #45a049; /* dunkleres Grün beim Hover */
 }
 
+/* kurseerstellen admin*/
+
+.green-Button {
+    background-color: #006644;
+}
+.red-Button{
+    background-color: #ff0000;
+}

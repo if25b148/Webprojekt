@@ -46,57 +46,142 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kurs erstellen</title>
-    <link rel="stylesheet" href="../css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kurs erstellen</title>
+
+<style>
+/* ===== ZENTRIERTE SEITE ===== */
+.page-center {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #b0e6c7;
+    font-family: Arial, sans-serif;
+}
+
+
+.formular {
+    background: #d3f0e0;
+    padding: 30px;
+    border-radius: 10px;
+    width: 600px;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+}
+
+.formular h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* ===== MELDUNG ===== */
+.form-message {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: red;
+}
+
+/* ===== FORMULAR ===== */
+.formular label {
+    font-weight: bold;
+}
+
+.formular input,
+.formular textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+}
+
+.formular textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* ===== BUTTONS ===== */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-primary {
+    padding: 12px 20px;
+    background-color: #006644;
+    color: #ffffff;
+    text-decoration: none;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-primary:hover {
+    background-color: #004422;
+}
+
+.btn-danger {
+    background-color: #cc0000;
+}
+
+.btn-danger:hover {
+    background-color: #990000;
+}
+</style>
+
 </head>
-<body style="background-color:#b0e6c7;">
-  <header>
-    <a href="../index.html"><img src="../img/logo.png" alt="Logo" class="imglogo"></a>
-    <nav>
-      <ul>
-        <li><a href="admin_page.php">Admin</a></li>
-        <li><a href="logout.php">Logout</a></li>
-      </ul>
-    </nav>
-  </header>
+<body>
 
-  <main>
-    <h1>Neuen Kurs erstellen</h1>
+<main class="page-center">
+    <div class="formular">
 
-    <?php if($message): ?>
-        <p><?= htmlspecialchars($message) ?></p>
-    <?php endif; ?>
+        <h1>Neuen Kurs erstellen</h1>
 
-    <form method="post">
-    <label>Kurs:</label><br>
-    <input type="text" name="kurs" required><br><br>
+        <?php if ($message): ?>
+            <p class="form-message"><?= htmlspecialchars($message) ?></p>
+        <?php endif; ?>
 
-    <label>Niveau:</label><br>
-    <input type="text" name="niveau" required><br><br>
+        <form method="post">
+            <label>Kurs</label>
+            <input type="text" name="kurs" required>
 
-    <label>Dauer:</label><br>
-    <input type="text" name="dauer" required><br><br>
+            <label>Niveau</label>
+            <input type="text" name="niveau" required>
 
-    <label>Lernmaterialien:</label><br>
-    <textarea name="lernmaterialien" required></textarea><br><br>
+            <label>Dauer</label>
+            <input type="text" name="dauer" required>
 
-    <label>Zusatzmaterialien:</label><br>
-    <textarea name="zusatzmaterialien"></textarea><br><br>
+            <label>Lernmaterialien</label>
+            <textarea name="lernmaterialien" required></textarea>
 
-    <label>Termin Erstberatung:</label><br>
-    <textarea name="termin_erstberatung"></textarea><br><br>
+            <label>Zusatzmaterialien</label>
+            <textarea name="zusatzmaterialien"></textarea>
 
-    <label>Ort:</label><br>
-    <input type="text" name="ort" required><br><br>
+            <label>Termin Erstberatung</label>
+            <textarea name="termin_erstberatung"></textarea>
 
-    <label>Lehrkraft:</label><br>
-    <input type="text" name="lehrkraft" required><br><br>
+            <label>Ort</label>
+            <input type="text" name="ort" required>
 
-    <button type="submit">Kurs erstellen</button>
-</form>
+            <label>Lehrkraft</label>
+            <input type="text" name="lehrkraft" required>
 
-  </main>
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">Kurs erstellen</button>
+                <a href="user_page.php" class="btn-primary">Zurück</a>
+                <a href="logout.php" class="btn-primary btn-danger">Logout</a>
+            </div>
+        </form>
+
+    </div>
+</main>
+
 </body>
 </html>
