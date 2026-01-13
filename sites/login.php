@@ -35,7 +35,7 @@ function isActiveForm($formName, $activeForm) {
                 <li><a href="kursinfos.php">Kurse</a></li>
                 <li><a href="ueberuns.html">Über uns</a></li>
                 <li><a href="faq.html">FAQ</a></li>
-                <li><a href="kontakt.html">Kontakt</a></li>
+                <li><a href="kontakt.php">Kontakt</a></li>
                 <li><a href="impressum.html">Impressum</a></li>
                 <li><a href="login.php" class="anmeldenlink">Login</a></li>
             </ul>
@@ -92,7 +92,7 @@ function isActiveForm($formName, $activeForm) {
       <ul>
           <li><a href="datenschutzerklaerung.html">Datenschutzerklärung</a></li>
           <li><a href="agb.html">AGB</a></li>
-          <li><a href="kontakt.html">Kontakt</a></li>
+          <li><a href="kontakt.php">Kontakt</a></li>
           <li><a href="impressum.html">Impressum</a></li>
       </ul>
   </footer>
