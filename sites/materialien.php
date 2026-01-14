@@ -19,13 +19,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $course_id = intval($_POST['course_id']);
 
     $allowedTypes = [
-        'application/pdf',
-        'application/zip',
-        'image/jpeg',
-        'image/png',
-        'audio/mpeg',
-        'audio/wav'
-    ];
+    'application/pdf',
+    'application/zip',
+    'application/x-zip-compressed',
+    'multipart/x-zip',
+    'application/octet-stream',
+    'image/jpeg',
+    'image/png',
+    'audio/mpeg',
+    'audio/wav'
+];
 
     if (!isset($_FILES['material']) || $_FILES['material']['error'] !== 0) {
         $message = "Datei-Upload fehlgeschlagen.";
