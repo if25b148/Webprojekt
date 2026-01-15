@@ -203,9 +203,6 @@ input {
     <a href="user_page.php" class="btn-secondary">Zurück zur Übersicht</a>
     <a href="logout.php" class="btn-secondary logout-btn">Logout</a>
 </div>
-
-
-
 </form>
 
 </div>
