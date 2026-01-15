@@ -200,10 +200,7 @@ input {
 
     <button class="btnuserdaten">Daten speichern</button>
     <div class="button-row">
-    <!-- Zurück-Button -->
     <a href="user_page.php" class="btn-secondary">Zurück zur Übersicht</a>
-
-    <!-- Logout-Button -->
     <a href="logout.php" class="btn-secondary logout-btn">Logout</a>
 </div>
 
