@@ -1,16 +1,16 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'admin') {
-    header("Location: login.php");
+if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'admin') {      //Zugriff nur für Admins
+    header("Location: login.php");              //Weiterleitung zum Login
     exit();
 }
 
-require_once 'config.php';
+require_once 'config.php';      //DB-Verbindung laden
 
-$message = '';
+$message = '';                  //Statusmeldung
 
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
+if($_SERVER['REQUEST_METHOD'] === 'POST'){          //Formular abgeschickt
     $kurs = trim($_POST['kurs']);
     $niveau = trim($_POST['niveau']);
     $dauer = trim($_POST['dauer']);
@@ -21,24 +21,24 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $lehrkraft = trim($_POST['lehrkraft']);
     $admin_id = $_SESSION['user_id']; // Admin-ID aus der Session
 
-    if($kurs && $niveau && $dauer && $lernmaterialien && $ort && $lehrkraft){
+    if($kurs && $niveau && $dauer && $lernmaterialien && $ort && $lehrkraft){           //Pflichtfelder prüfen
         $stmt = $conn->prepare("
             INSERT INTO courses 
             (kurs, niveau, dauer, lernmaterialien, zusatzmaterialien, termin_erstberatung, ort, lehrkraft, created_by)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ");
+        ");         //Kurs in DB einfügen
         $stmt->bind_param(
             "ssssssssi",
             $kurs, $niveau, $dauer, $lernmaterialien, $zusatzmaterialien, $termin_erstberatung, $ort, $lehrkraft, $admin_id
-        );
-        if($stmt->execute()){
-            $message = 'Kurs erfolgreich erstellt!';
+        );          //werte binden
+        if($stmt->execute()){       //Einfügen erfolgreich?
+            $message = 'Kurs erfolgreich erstellt!';    //Erfolgsmeldung
         } else {
-            $message = 'Fehler beim Erstellen des Kurses: ' . $stmt->error;
+            $message = 'Fehler beim Erstellen des Kurses: ' . $stmt->error;     //Fehlermeldung
         }
         $stmt->close();
     } else {
-        $message = 'Bitte alle Pflichtfelder ausfüllen.';
+        $message = 'Bitte alle Pflichtfelder ausfüllen.';       //Hinweis auf Pflichtfelder
     }
 }
 ?>

@@ -1,22 +1,22 @@
 <?php
 session_start();
-require 'config.php';
+require 'config.php';             //DB-Verbindung laden
 
 // 1. Prüfen: User eingeloggt?
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: login.php");          //Weiterleitung, wenn nicht eingeloggt
     exit();
 }
 
-$userId = $_SESSION['user_id'];
+$userId = $_SESSION['user_id'];             //User-ID speichern
 
 // 2. Prüfen: course_id über GET?
 if (!isset($_GET['course_id'])) {
-    echo "Kein Kurs ausgewählt.";
+    echo "Kein Kurs ausgewählt.";           //Fehlermeldung
     exit();
 }
 
-$courseId = intval($_GET['course_id']);
+$courseId = intval($_GET['course_id']);     //course_id sichern
 
 // 3. Prüfen: Ist der User für diesen Kurs eingeschrieben?
 $stmt = $conn->prepare("
@@ -29,12 +29,12 @@ $stmt->bind_param("ii", $courseId, $userId);
 $stmt->execute();
 $result = $stmt->get_result();
 
-if ($result->num_rows === 0) {
+if ($result->num_rows === 0) {              //Wenn nicht eingeschrieben
     echo "Du bist für diesen Kurs nicht angemeldet oder der Kurs existiert nicht.";
     exit();
 }
 
-$course = $result->fetch_assoc();
+$course = $result->fetch_assoc();           //Kursdaten speichern
 $stmt->close();
 
 // 4. Alle Materialien für diesen Kurs holen
@@ -46,7 +46,7 @@ $stmt = $conn->prepare("
 ");
 $stmt->bind_param("i", $courseId);
 $stmt->execute();
-$materials = $stmt->get_result();
+$materials = $stmt->get_result();           //Materialien speichern
 $stmt->close();
 ?>
 <!DOCTYPE html>

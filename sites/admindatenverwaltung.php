@@ -3,19 +3,19 @@ session_start();
 require_once 'config.php';
 
 // Admin-Prüfung
-if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'admin') {
-    header("Location: login.php");
+if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'admin') {      //Zugriff nur für Admins
+    header("Location: login.php");          //Weiterleitung zum Login
     exit();
 }
 
 // Aktionen: löschen, sperren/entsperren
-if (isset($_GET['action'], $_GET['user_id'])) {
-    $user_id = intval($_GET['user_id']);
-    if ($_GET['action'] === 'delete') {
+if (isset($_GET['action'], $_GET['user_id'])) {        //Prüft, ob Aktion & User-ID vorhanden sind 
+    $user_id = intval($_GET['user_id']);        //User-ID absichern
+    if ($_GET['action'] === 'delete') {         //Nutzer löschen
         $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
         $stmt->bind_param("i", $user_id);
         $stmt->execute();
-    } elseif ($_GET['action'] === 'toggle_block') {
+    } elseif ($_GET['action'] === 'toggle_block') {     //Nutzer sperren / entsperren
         $stmt = $conn->prepare("UPDATE users SET blocked = NOT blocked WHERE id = ?");
         $stmt->bind_param("i", $user_id);
         $stmt->execute();
@@ -24,7 +24,7 @@ if (isset($_GET['action'], $_GET['user_id'])) {
 
 // Alle Nutzer laden
 $result = $conn->query("SELECT id, vorname, nachname, email, role, blocked FROM users ORDER BY id ASC");
-$users = $result->fetch_all(MYSQLI_ASSOC);
+$users = $result->fetch_all(MYSQLI_ASSOC);      //Ergebnis als Array speichern
 ?>
 
 <!DOCTYPE html>

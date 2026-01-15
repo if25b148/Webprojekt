@@ -1,14 +1,14 @@
 <?php
 session_start();
-require 'config.php'; // DB-Verbindung
+require 'config.php'; //DB-Verbindung laden
 
 // 1. Prüfen: Nutzer eingeloggt?
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+if (!isset($_SESSION['user_id'])) {     //Login prüfen
+    header("Location: login.php");      //Bei nicht eingeloggt weiterleiten
     exit();
 }
 
-$userId = $_SESSION['user_id'];
+$userId = $_SESSION['user_id'];         //Aktuelle User-ID
 
 // 2. Alle Kurse holen, für die der Nutzer angemeldet ist
 $stmt = $conn->prepare("
@@ -17,15 +17,15 @@ $stmt = $conn->prepare("
     JOIN enrollments cr ON c.id = cr.course_id
     WHERE cr.user_id = ?
     ORDER BY c.created_at DESC
-");
-$stmt->bind_param("i", $userId);
-$stmt->execute();
-$result = $stmt->get_result();
+");         //SQL-Abfrage vorbereiten
+$stmt->bind_param("i", $userId);        //Parameter binden
+$stmt->execute();                       //Query ausführen
+$result = $stmt->get_result();          //Ergebnis holen
 
-$courses = [];
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $courses[] = $row;
+$courses = [];                          //Array für Kurse
+if ($result->num_rows > 0) {            //Wenn Kurse vorhanden
+    while ($row = $result->fetch_assoc()) {     //Durchlaufen
+        $courses[] = $row;              //In Array speichern
     }
 }
 $stmt->close();

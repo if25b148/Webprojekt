@@ -1,41 +1,41 @@
 <?php
 session_start();
-if (empty($_SESSION['email'])) {
-    header("Location: login.php");
+if (empty($_SESSION['email'])) {        //Prüft Login-Status
+    header("Location: login.php");      //Weiterleitung zum Login
     exit;
 }
 
-require_once 'config.php';
+require_once 'config.php';              //DB-Verbindung laden
 
-$user_email = $_SESSION['email'];
-$message = "";
+$user_email = $_SESSION['email'];       //Aktuelle User-E-Mail
+$message = "";                          //Statusmeldung
 
 /* User-Daten laden */
 $stmt = $conn->prepare(
-    "SELECT vorname, nachname, email, password FROM users WHERE email = ?"
+    "SELECT vorname, nachname, email, password FROM users WHERE email = ?"      //User-Daten abfragen
 );
-$stmt->bind_param("s", $user_email);
-$stmt->execute();
-$user = $stmt->get_result()->fetch_assoc();
+$stmt->bind_param("s", $user_email);    //E-Mail binden
+$stmt->execute();                       //Query ausführen
+$user = $stmt->get_result()->fetch_assoc();     //Ergebnis speichern
 
 /* Formular absenden */
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {    //Prüft Formular-Submit
     $vorname  = $_POST['vorname'];
     $nachname = $_POST['nachname'];
     $email    = $_POST['email'];
 
-    $password = !empty($_POST['passwort'])
-        ? password_hash($_POST['passwort'], PASSWORD_DEFAULT)
-        : $user['password'];
+    $password = !empty($_POST['passwort'])      //Passwort geändert?
+        ? password_hash($_POST['passwort'], PASSWORD_DEFAULT)   //Neues Passwort hashen       
+        : $user['password'];            //Altes Passwort behalten
 
     $stmt = $conn->prepare(
-        "UPDATE users SET vorname=?, nachname=?, email=?, password=? WHERE email=?"
+        "UPDATE users SET vorname=?, nachname=?, email=?, password=? WHERE email=?"         //User aktualisieren
     );
-    $stmt->bind_param("sssss", $vorname, $nachname, $email, $password, $user_email);
+    $stmt->bind_param("sssss", $vorname, $nachname, $email, $password, $user_email);        //Werte binden
 
-    if ($stmt->execute()) {
-    $_SESSION['email'] = $email;
-    $user_email = $email;
+    if ($stmt->execute()) {             //Update erforderlich?
+    $_SESSION['email'] = $email;        //Session-E-Mail aktualisieren
+    $user_email = $email;               //Lokale E-Mail aktualisieren
 
     // $user sauber aktualisieren, password behalten
     $user['vorname']  = $vorname;

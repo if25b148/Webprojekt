@@ -1,19 +1,19 @@
 <?php
 session_start();
-require_once 'config.php';
+require_once 'config.php';          //DB-Verbindung laden
 
-if (isset($_POST['reset'])) {
-    $email = $_POST['email'];
-    $new_password = password_hash($_POST['new_password'], PASSWORD_DEFAULT);
+if (isset($_POST['reset'])) {       //Prüfen, ob Formular abgeschickt
+    $email = $_POST['email'];       //E-Mail aus Formular
+    $new_password = password_hash($_POST['new_password'], PASSWORD_DEFAULT);        //Neues Passwort hashen
 
-    $result = $conn->query("SELECT * FROM users WHERE email='$email'");
-    if ($result->num_rows > 0) {
-        $conn->query("UPDATE users SET password='$new_password' WHERE email='$email'");
-        $_SESSION['success'] = "Passwort erfolgreich geändert! Sie können sich jetzt einloggen.";
-        header("Location: login.php");
+    $result = $conn->query("SELECT * FROM users WHERE email='$email'");         //Nutzer prüfen
+    if ($result->num_rows > 0) {        //Wenn E-Mail existiert
+        $conn->query("UPDATE users SET password='$new_password' WHERE email='$email'");     //Passwort aktualisieren
+        $_SESSION['success'] = "Passwort erfolgreich geändert! Sie können sich jetzt einloggen.";       //Erfolgsmeldung
+        header("Location: login.php");      //Weiterleitung zum Login
         exit();
     } else {
-        $error = "Diese E-Mail ist nicht registriert.";
+        $error = "Diese E-Mail ist nicht registriert.";     //Fehlermeldung
     }
 }
 ?>

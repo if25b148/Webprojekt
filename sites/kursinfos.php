@@ -2,12 +2,12 @@
 require 'config.php'; // DB-Verbindung einbinden
 
 // Alle Kurse aus der DB abrufen
-$result = $conn->query("SELECT * FROM courses ORDER BY created_at DESC");
+$result = $conn->query("SELECT * FROM courses ORDER BY created_at DESC");       //Kurse laden
 
-$courses = [];
-if($result && $result->num_rows > 0){
-    while($row = $result->fetch_assoc()){
-        $courses[] = $row;
+$courses = [];          //Kurs-Array
+if($result && $result->num_rows > 0){           //Prüft, ob Kurse vorhanden sind
+    while($row = $result->fetch_assoc()){       //Datensätze durchlaufen
+        $courses[] = $row;                      //Kurs speichern
     }
 }
 ?>

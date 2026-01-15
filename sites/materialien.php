@@ -1,24 +1,24 @@
 <?php
 session_start();
-require_once 'config.php';
+require_once 'config.php';              //DB-Verbindung laden
 
 /* Nur Admin */
-if (!isset($_SESSION['email']) || ($_SESSION['role'] ?? '') !== 'admin') {
-    header("Location: login.php");
+if (!isset($_SESSION['email']) || ($_SESSION['role'] ?? '') !== 'admin') {      //Admin prüfen
+    header("Location: login.php");              //Bei Nicht-Admin weiterleiten
     exit;
 }
 
 /* Kurse laden */
-$courses = $conn->query("SELECT id, kurs FROM courses");
+$courses = $conn->query("SELECT id, kurs FROM courses");        //Alle Kurse abrufen
 
 /* Upload-Logik */
-$message = "";
+$message = "";              //Meldung initialisieren
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {            //Prüft, ob Formular abgeschickt
 
-    $course_id = intval($_POST['course_id']);
+    $course_id = intval($_POST['course_id']);           //Kurs-ID
 
-    $allowedTypes = [
+    $allowedTypes = [               //erlaubte Dateitypen
     'application/pdf',
     'application/zip',
     'application/x-zip-compressed',
@@ -30,38 +30,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     'audio/wav'
 ];
 
-    if (!isset($_FILES['material']) || $_FILES['material']['error'] !== 0) {
-        $message = "Datei-Upload fehlgeschlagen.";
+    if (!isset($_FILES['material']) || $_FILES['material']['error'] !== 0) {        //Datei-Fehler prüfen
+        $message = "Datei-Upload fehlgeschlagen.";          //Fehlermeldung
     } else {
 
-        $file = $_FILES['material'];
+        $file = $_FILES['material'];                        //Datei-Array
 
-        if (!in_array($file['type'], $allowedTypes)) {
-            $message = "Dateityp nicht erlaubt.";
+        if (!in_array($file['type'], $allowedTypes)) {      //Typ prüfen
+            $message = "Dateityp nicht erlaubt.";           //Fehlermeldung
         } else {
 
             /* Kurs-Ordner definieren */
-            $courseDir = __DIR__ . "/uploads/courses/course_" . $course_id . "/";
+            $courseDir = __DIR__ . "/uploads/courses/course_" . $course_id . "/";       //Zielordner
 
             /* Ordner anlegen, falls nicht vorhanden */
             if (!is_dir($courseDir)) {
-                mkdir($courseDir, 0755, true);
+                mkdir($courseDir, 0755, true);      //Ordner erstellen
             }
 
             /* Sicherer Dateiname */
-            $safeName = time() . "_" . basename($file['name']);
+            $safeName = time() . "_" . basename($file['name']);     //Zeit+Originalname
 
             /* Server-Zielpfad */
-            $targetPath = $courseDir . $safeName;
+            $targetPath = $courseDir . $safeName;           //Vollständiger Pfad
 
             /* Pfad für Datenbank (relativ!) */
-            $dbPath = "uploads/courses/course_$course_id/" . $safeName;
+            $dbPath = "uploads/courses/course_$course_id/" . $safeName;         //Relativer Pfad
 
-            if (move_uploaded_file($file['tmp_name'], $targetPath)) {
+            if (move_uploaded_file($file['tmp_name'], $targetPath)) {           //Datei verschieben
 
                 $stmt = $conn->prepare(
                     "INSERT INTO materials (course_id, filename, filepath, filetype)
-                     VALUES (?, ?, ?, ?)"
+                     VALUES (?, ?, ?, ?)"       //Eintrag in DB
                 );
 
                 $stmt->bind_param(
@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $file['type']
                 );
 
-                $stmt->execute();
+                $stmt->execute();           //Datenbank speichern
 
                 $message = "Material erfolgreich hochgeladen.";
             } else {

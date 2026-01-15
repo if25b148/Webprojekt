@@ -1,20 +1,20 @@
 <?php
 session_start();
 
-$errors = [
-    'login' => $_SESSION['login_error'] ?? '',
-    'register' => $_SESSION['register_error'] ?? ''
+$errors = [             //Fehlermeldungen sammeln
+    'login' => $_SESSION['login_error'] ?? '',              //Login-Fehler
+    'register' => $_SESSION['register_error'] ?? ''         //Registrierungs-Fehler
 ];
-$activeForm = $_SESSION['active_form'] ?? 'login';
-$returnUrl = $_GET['return_url'] ?? '';
+$activeForm = $_SESSION['active_form'] ?? 'login';          //Aktives Formular
+$returnUrl = $_GET['return_url'] ?? '';                     //Rücksprung-URL
 
-session_unset();
+session_unset();        //Session-Fehler zurücksetzen
 
-function showError($error) {
+function showError($error) {        //Fehler anzeigen
     return !empty($error) ? "<p class='error-message'>$error</p>" : '';
 }
 
-function isActiveForm($formName, $activeForm) {
+function isActiveForm($formName, $activeForm) {         //Aktives Formular markieren
     return $formName === $activeForm ? 'active' : '';
 }
 ?>
