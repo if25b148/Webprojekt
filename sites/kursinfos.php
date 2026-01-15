@@ -19,7 +19,7 @@ if($result && $result->num_rows > 0){
     <title>Sprachkursbuchung</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body style="background-color:#b0e6c7;">
+<body>
   <header>
         <a href="../index.html"><img src="../img/logo.png" alt="Logo" class="imglogo"></a>
         <nav>
