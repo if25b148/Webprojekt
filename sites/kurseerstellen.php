@@ -51,7 +51,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <title>Kurs erstellen</title>
 
 <style>
-/* ===== ZENTRIERTE SEITE ===== */
+
 .page-center {
     min-height: 100vh;
     display: flex;
@@ -75,7 +75,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     margin-bottom: 20px;
 }
 
-/* ===== MELDUNG ===== */
+
 .form-message {
     text-align: center;
     font-weight: bold;
@@ -83,7 +83,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     color: red;
 }
 
-/* ===== FORMULAR ===== */
 .formular label {
     font-weight: bold;
 }
@@ -103,7 +102,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     min-height: 80px;
 }
 
-/* ===== BUTTONS ===== */
+
 .form-actions {
     display: flex;
     justify-content: space-between;
