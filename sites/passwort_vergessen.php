@@ -74,9 +74,7 @@ if (isset($_POST['reset'])) {
         <p><a href="login.php" class="forgot-link">Zurück zum Login</a></p>
     </div>
 </section>
-<aside>
-  <p></p>
-    </aside>
+
 </main>
 <footer>
       <ul>
