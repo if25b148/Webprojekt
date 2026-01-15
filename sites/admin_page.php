@@ -16,7 +16,7 @@ if (!isset($_SESSION['email'])) {       //Prüft, ob der User eingeloggt ist
 <title>Admin Page</title>
 
 <style>
-/* ===== BODY / SEITE ===== */
+
 body {
     margin: 0;
     padding: 0;
@@ -28,7 +28,7 @@ body {
     background-color: #b0e6c7;
 }
 
-/* ===== SECTION / WRAPPER ===== */
+
 .userpagesection {
     display: flex;
     justify-content: center;
@@ -37,7 +37,7 @@ body {
     height: 100%;
 }
 
-/* ===== CARD / BOX ===== */
+
 .boxAdminUser {
     background-color: #d3f0e0;
     padding: 40px;
@@ -64,7 +64,7 @@ body {
     color: #3a5f4e;
 }
 
-/* ===== BUTTON CONTAINER ===== */
+
 .button-container {
     display: flex;
     justify-content: center;
@@ -72,7 +72,7 @@ body {
     flex-wrap: wrap; /* Buttons umbrechen bei kleinen Bildschirmen */
 }
 
-/* ===== BUTTONS ===== */
+
 .boxAdminUser .btn {
     flex: 1;
     min-width: 120px;
@@ -88,7 +88,7 @@ body {
 
 }
 
-/* Grün = Aktionen */
+
 .btn-green {
     background-color: #006644;
 }
@@ -98,7 +98,7 @@ body {
     
 }
 
-/* Rot = Logout */
+
 .btn-red {
     background-color: #c0392b;
 }
