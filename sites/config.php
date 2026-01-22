@@ -9,6 +9,6 @@ $conn = new mysqli($host, $user, $password, $database);     //Erstellt DB-Verbin
 
 if($conn->connect_error)        //Prüft, ob Verbindung fehlgeschlagen ist
     {
-        die("Connection failed: ".$conn->connect_error);    //Skript abbrechen bei Fehler
+        die("Connection failed: ".$conn->connect_error);    //Skript abbrechen bei Fehler.
     }
 ?>

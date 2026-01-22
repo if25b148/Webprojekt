@@ -5,7 +5,7 @@ require 'config.php'; // DB-Verbindung einbinden
 $result = $conn->query("SELECT * FROM courses ORDER BY created_at DESC");       //Kurse laden
 
 $courses = [];          //Kurs-Array
-if($result && $result->num_rows > 0){           //Prüft, ob Kurse vorhanden sind
+if($result && $result->num_rows > 0){           //Prüft, ob es ein ergebnis gibt und ist Anzahl der Kurse größer als 0
     while($row = $result->fetch_assoc()){       //Datensätze durchlaufen
         $courses[] = $row;                      //Kurs speichern
     }
@@ -42,7 +42,6 @@ if($result && $result->num_rows > 0){           //Prüft, ob Kurse vorhanden sin
                 <?php foreach($courses as $course): ?>
                     <div class="kurs-box kurs-item">
 
-                        <!-- Sichtbar: Kursname -->
                         <div class="kurs-title">
                             <?= htmlspecialchars($course['kurs']) ?>
                         </div>

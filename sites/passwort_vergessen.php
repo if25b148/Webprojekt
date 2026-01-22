@@ -2,8 +2,8 @@
 session_start();
 require_once 'config.php';          //DB-Verbindung laden
 
-if (isset($_POST['reset'])) {       //Prüfen, ob Formular abgeschickt
-    $email = $_POST['email'];       //E-Mail aus Formular
+if (isset($_POST['reset'])) {       //Prüfen, ob Formular abgeschickt, $_POST['reset'] exisitert nur wenn User auf Btn geklickt hat.
+    $email = $_POST['email'];       //E-Mail aus Formular, die eingetippt wurde
     $new_password = password_hash($_POST['new_password'], PASSWORD_DEFAULT);        //Neues Passwort hashen
 
     $result = $conn->query("SELECT * FROM users WHERE email='$email'");         //Nutzer prüfen
@@ -13,7 +13,7 @@ if (isset($_POST['reset'])) {       //Prüfen, ob Formular abgeschickt
         header("Location: login.php");      //Weiterleitung zum Login
         exit();
     } else {
-        $error = "Diese E-Mail ist nicht registriert.";     //Fehlermeldung
+        $error = "Diese E-Mail ist nicht registriert.";     //Fehlermeldung.
     }
 }
 ?>

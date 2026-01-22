@@ -8,15 +8,15 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-$userId = $_SESSION['user_id'];             //User-ID speichern
+$userId = $_SESSION['user_id'];             //User-ID lokal speichern
 
-// 2. Prüfen: course_id über GET?
+// 2. Prüfen: ob eine kurs id übergeben wurde
 if (!isset($_GET['course_id'])) {
     echo "Kein Kurs ausgewählt.";           //Fehlermeldung
     exit();
 }
 
-$courseId = intval($_GET['course_id']);     //course_id sichern
+$courseId = intval($_GET['course_id']);     //course_id sichern (wandelt in Integer um)
 
 // 3. Prüfen: Ist der User für diesen Kurs eingeschrieben?
 $stmt = $conn->prepare("
@@ -29,12 +29,12 @@ $stmt->bind_param("ii", $courseId, $userId);
 $stmt->execute();
 $result = $stmt->get_result();
 
-if ($result->num_rows === 0) {              //Wenn nicht eingeschrieben
+if ($result->num_rows === 0) {              //Wenn nicht eingeschrieben, Wenn die Abfrage keine Zeilen zurückliefert, ist der User nicht eingeschrieben
     echo "Du bist für diesen Kurs nicht angemeldet oder der Kurs existiert nicht.";
     exit();
 }
 
-$course = $result->fetch_assoc();           //Kursdaten speichern
+$course = $result->fetch_assoc();           //Kursdaten speichern, wandelt db zeilen in  array um
 $stmt->close();
 
 // 4. Alle Materialien für diesen Kurs holen

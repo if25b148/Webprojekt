@@ -8,7 +8,7 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'admin') {      //Zugrif
 
 require_once 'config.php';      //DB-Verbindung laden
 
-$message = '';                  //Statusmeldung
+$message = '';                  //Initialisiert eine leere Variable, die Erfolg oder Fehler anzeigen wird.
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){          //Formular abgeschickt
     $kurs = trim($_POST['kurs']);
@@ -21,7 +21,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){          //Formular abgeschickt
     $lehrkraft = trim($_POST['lehrkraft']);
     $admin_id = $_SESSION['user_id']; // Admin-ID aus der Session
 
-    if($kurs && $niveau && $dauer && $lernmaterialien && $ort && $lehrkraft){           //Pflichtfelder prüfen
+    if($kurs && $niveau && $dauer && $lernmaterialien && $ort && $lehrkraft){           //Pflichtfelder prüfen, wichtig nicht leer
         $stmt = $conn->prepare("
             INSERT INTO courses 
             (kurs, niveau, dauer, lernmaterialien, zusatzmaterialien, termin_erstberatung, ort, lehrkraft, created_by)

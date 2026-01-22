@@ -10,7 +10,7 @@ if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'admin') {      //Zugrif
 
 // Aktionen: löschen, sperren/entsperren
 if (isset($_GET['action'], $_GET['user_id'])) {        //Prüft, ob Aktion & User-ID vorhanden sind 
-    $user_id = intval($_GET['user_id']);        //User-ID absichern
+    $user_id = intval($_GET['user_id']);        //User-ID absichern, intval: wandelt Eingabe in int zahl
     if ($_GET['action'] === 'delete') {         //Nutzer löschen
         $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
         $stmt->bind_param("i", $user_id);

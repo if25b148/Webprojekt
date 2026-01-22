@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['email'])) {           //Prüfen, ob eingeloggt ist
+if (!isset($_SESSION['email'])) {           //Prüfen, ob eingeloggt ist, gibt es keine mail in der session wird unten weitergeleitet
     header("Location: login.php");          //Weiterleitung, falls nicht
     exit();
 }

@@ -2,8 +2,7 @@
 session_start();
 require_once 'config.php';      //DB-Verbindung laden
 
-$returnUrl = $_POST['return_url'] ?? 'user_page.php';       //Zielseite nach Login/Register
-
+$returnUrl = $_POST['return_url'] ?? 'user_page.php';       //Zielseite nach Login/Register, ob Formular eine return_url übermittelt, wenn nicht zu userpage.
 if (isset($_POST['register'])) {        //Registrierungsformular abgeschickt
     $vorname = $_POST['vorname'];
     $nachname = $_POST['nachname'];
@@ -19,8 +18,8 @@ if (isset($_POST['register'])) {        //Registrierungsformular abgeschickt
         exit();
     } else {
         $conn->query("INSERT INTO users (vorname, nachname, email, password, role) VALUES ('$vorname', '$nachname', '$email', '$password', '$role')");  //User anlegen
-        $_SESSION['user_id'] = $conn->insert_id;        //User-ID speichern
-        $_SESSION['vorname'] = $vorname;                //Vorname speichern
+        $_SESSION['user_id'] = $conn->insert_id;        //session User-ID speichern
+        $_SESSION['vorname'] = $vorname;                //sessionVorname speichern
         $_SESSION['nachname'] = $nachname;              //Nachname speichern
         $_SESSION['email'] = $email;                    //E-Mail speichern
         $_SESSION['role'] = strtolower($role);          //Rolle speichern

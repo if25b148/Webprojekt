@@ -34,10 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {    //Prüft Formular-Submit
     $stmt->bind_param("sssss", $vorname, $nachname, $email, $password, $user_email);        //Werte binden
 
     if ($stmt->execute()) {             //Update erforderlich?
-    $_SESSION['email'] = $email;        //Session-E-Mail aktualisieren
+    $_SESSION['email'] = $email;        //Session-E-Mail aktualisieren, sonst denkt alte email ist noch aktiv
     $user_email = $email;               //Lokale E-Mail aktualisieren
 
-    // $user sauber aktualisieren, password behalten
+    // $user array  aktualisieren, password behalten
     $user['vorname']  = $vorname;
     $user['nachname'] = $nachname;
     $user['email']    = $email;

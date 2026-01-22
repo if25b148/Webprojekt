@@ -25,7 +25,7 @@ $result = $stmt->get_result();          //Ergebnis holen
 $courses = [];                          //Array für Kurse
 if ($result->num_rows > 0) {            //Wenn Kurse vorhanden
     while ($row = $result->fetch_assoc()) {     //Durchlaufen
-        $courses[] = $row;              //In Array speichern
+        $courses[] = $row;              //In Array speichern.
     }
 }
 $stmt->close();

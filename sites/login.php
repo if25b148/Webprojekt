@@ -10,11 +10,11 @@ $returnUrl = $_GET['return_url'] ?? '';                     //Rücksprung-URL
 
 session_unset();        //Session-Fehler zurücksetzen
 
-function showError($error) {        //Fehler anzeigen
+function showError($error) {        //Zeigt die Fehlermeldung nur an, wenn sie nicht leer ist.
     return !empty($error) ? "<p class='error-message'>$error</p>" : '';
 }
 
-function isActiveForm($formName, $activeForm) {         //Aktives Formular markieren
+function isActiveForm($formName, $activeForm) {         //Gibt "active" zurück, wenn das Formular angezeigt werden soll, sonst leer.
     return $formName === $activeForm ? 'active' : '';
 }
 ?>

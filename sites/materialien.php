@@ -30,13 +30,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {            //Prüft, ob Formular ab
     'audio/wav'
 ];
 
-    if (!isset($_FILES['material']) || $_FILES['material']['error'] !== 0) {        //Datei-Fehler prüfen
+    if (!isset($_FILES['material']) || $_FILES['material']['error'] !== 0) {        //Datei-Fehler prüfen, ob der Benutzer überhaupt eine Datei ausgewählt hat.
         $message = "Datei-Upload fehlgeschlagen.";          //Fehlermeldung
     } else {
 
-        $file = $_FILES['material'];                        //Datei-Array
+        $file = $_FILES['material'];                        //ist jetzt ein Array, das alle Infos zur Datei enthält
 
-        if (!in_array($file['type'], $allowedTypes)) {      //Typ prüfen
+        if (!in_array($file['type'], $allowedTypes)) {      //DateiTyp prüfen
             $message = "Dateityp nicht erlaubt.";           //Fehlermeldung
         } else {
 
@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {            //Prüft, ob Formular ab
             $safeName = time() . "_" . basename($file['name']);     //Zeit+Originalname
 
             /* Server-Zielpfad */
-            $targetPath = $courseDir . $safeName;           //Vollständiger Pfad
+            $targetPath = $courseDir . $safeName;           //absoluter Pfad auf dem Server, wo die Datei hinkopiert wird
 
             /* Pfad für Datenbank (relativ!) */
             $dbPath = "uploads/courses/course_$course_id/" . $safeName;         //Relativer Pfad
